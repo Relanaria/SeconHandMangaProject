@@ -11,11 +11,11 @@ export default function Footer() {
                 <div className="footer-section links">
                     <h2>Quick Links</h2>
                     <ul>
-                        <li><Link href="/">Home</Link></li>
-                        <li><Link href="/catalog">Catalog</Link></li>
-                        <li><Link href="/store">Store</Link></li>
-                        <li><Link href="/about">About</Link></li>
-                        <li><Link href="/contact">Contact Us</Link></li>
+                        <li><Link to="/">Home</Link></li>
+                        <li><Link to="/catalog">Catalog</Link></li>
+                        <li><Link to="/store">Store</Link></li>
+                        <li><Link to="/about">About</Link></li>
+                        <li><Link to="/contact-us">Contact Us</Link></li>
                     </ul>
                 </div>
                 <div className="footer-section contact">
@@ -25,9 +25,9 @@ export default function Footer() {
                 </div>
                 <div className="footer-section social">
                     <h2>Follow Us</h2>
-                    <Link href="#" className="social-icon"><i className="fab fa-facebook-f"></i></Link>
-                    <Link href="#" className="social-icon"><i className="fab fa-twitter"></i></Link>
-                    <Link href="#" className="social-icon"><i className="fab fa-instagram"></i></Link>
+                    <Link to="#" className="social-icon"><i className="fab fa-facebook-f"></i></Link>
+                    <Link to="#" className="social-icon"><i className="fab fa-twitter"></i></Link>
+                    <Link to="#" className="social-icon"><i className="fab fa-instagram"></i></Link>
                 </div>
             </div>
             <div className="footer-bottom">

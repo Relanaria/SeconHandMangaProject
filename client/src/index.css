@@ -6,9 +6,21 @@ body {
   font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-/* NavBar css START*/
+#root {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+footer {
+  margin-top: auto;
+}
+
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -44,15 +56,12 @@ body {
   color: #ff4081;
 }
 
-
-/*NavBar css END*/
-
-/* footer css START*/
 .footer {
   background-color: #1c1c1c;
   color: #fff;
   padding: 20px 0;
   text-align: center;
+  width: 100%;
 }
 
 .footer-content {
@@ -78,9 +87,7 @@ body {
   margin: 0;
   padding: 0;
 }
-.footer-section ul li {
-  margin: 5px 15px 5px 0;
-}
+
 .footer-section ul {
   list-style: none;
 }
@@ -99,18 +106,12 @@ body {
   color: #ff79a1;
 }
 
-.footer-section ul li a, .footer-section ul li a:visited {
-  color: #ff4081;
-  text-decoration: none;
-  font-size: 1.3em;
-  transition: color 0.3s;
-}
-
 .footer-section .social a {
   color: #ff4081;
   font-size: 2em;
   margin: 0 15px;
   transition: color 0.3s;
+  display: inline-block;
 }
 
 .footer-section .social a:hover {
@@ -121,7 +122,7 @@ body {
   background-color: #111;
   color: #bbb;
   padding: 10px 0;
-  font-size: 1em; 
+  font-size: 1em;
 }
 
 .social-icon {
@@ -135,6 +136,3 @@ body {
   color: #ff79a1;
   transform: scale(1.1);
 }
-
-
-/*Footer css END */

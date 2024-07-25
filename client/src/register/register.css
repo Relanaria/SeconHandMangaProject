@@ -1,21 +1,20 @@
-.contact-us {
+.register-container {
     color: #fff;
     padding: 20px;
     text-align: center;
-    max-width: 800px;
+    max-width: 400px;
     margin: 0 auto;
     background-color: rgba(0, 0, 0, 0.7);
     border-radius: 10px;
     margin-top: 20px;
-    margin-bottom: 20px;
 }
 
-.contact-us h1 {
+.register-container h1 {
     font-size: 2.5em;
     margin-bottom: 20px;
 }
 
-.contact-us form {
+.register-container form {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -25,7 +24,7 @@
 .form-group {
     margin-bottom: 15px;
     width: 100%;
-    max-width: 600px;
+    box-sizing: border-box;
 }
 
 .form-group label {
@@ -35,18 +34,13 @@
     text-align: left;
 }
 
-.form-group input,
-.form-group textarea {
+.form-group input {
     width: 100%;
     padding: 10px;
     font-size: 1em;
     border-radius: 5px;
     border: 1px solid #ccc;
-}
-
-.form-group textarea {
-    resize: vertical;
-    height: 150px;
+    box-sizing: border-box;
 }
 
 button[type="submit"] {
