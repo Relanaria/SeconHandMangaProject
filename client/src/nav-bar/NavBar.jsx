@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function NavBar() {
 
@@ -8,26 +9,26 @@ export default function NavBar() {
         <nav className="navbar">
 
             <div className="logo">
-                <a href="/">
+                <Link to="/">
                     <img src="/images/logo.png" alt="SecondHandManga Logo" />
-                </a>
+                </Link>
             </div>
             <ul className="nav-links">
-                <li><a href="/">Home</a></li>
-                <li><a href="/catalog">Catalog</a></li>
-                <li><a href="/store">Store</a></li>
-                {activeUser && <li><a href="/createItem">List Product</a></li>}
-                <li><a href="/about">About</a></li>
-                <li><a href="/contact">Contact Us</a></li>
+                <li><Link to="/">Home</Link></li>
+                <li><Link to="/catalog">Catalog</Link></li>
+                <li><Link to="/store">Store</Link></li>
+                {activeUser && <li><Link to="/createItem">List Product</Link></li>}
+                <li><Link to="/about">About</Link></li>
+                <li><Link to="/contact">Contact Us</Link></li>
             </ul>
             <div className="auth-links">
                 {!activeUser && (
                     <>
-                        <a href="/login">Login</a>
-                        <a href="/register">Register</a>
+                        <li><Link to="/login">Login</Link></li>
+                        <li><Link to="/register">Register</Link></li>
                     </>
                 )}
-                {activeUser && <a href="/logout">Logout</a>}
+                {activeUser && <Link to="/logout">Logout</Link>}
             </div>
         </nav>
     );

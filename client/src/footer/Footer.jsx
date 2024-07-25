@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Footer() {
         return (
             <footer className="footer">
@@ -9,11 +11,11 @@ export default function Footer() {
                 <div className="footer-section links">
                     <h2>Quick Links</h2>
                     <ul>
-                        <li><a href="/">Home</a></li>
-                        <li><a href="/catalog">Catalog</a></li>
-                        <li><a href="/store">Store</a></li>
-                        <li><a href="/about">About</a></li>
-                        <li><a href="/contact">Contact Us</a></li>
+                        <li><Link href="/">Home</Link></li>
+                        <li><Link href="/catalog">Catalog</Link></li>
+                        <li><Link href="/store">Store</Link></li>
+                        <li><Link href="/about">About</Link></li>
+                        <li><Link href="/contact">Contact Us</Link></li>
                     </ul>
                 </div>
                 <div className="footer-section contact">
@@ -23,9 +25,9 @@ export default function Footer() {
                 </div>
                 <div className="footer-section social">
                     <h2>Follow Us</h2>
-                    <a href="#" className="social-icon"><i className="fab fa-facebook-f"></i></a>
-                    <a href="#" className="social-icon"><i className="fab fa-twitter"></i></a>
-                    <a href="#" className="social-icon"><i className="fab fa-instagram"></i></a>
+                    <Link href="#" className="social-icon"><i className="fab fa-facebook-f"></i></Link>
+                    <Link href="#" className="social-icon"><i className="fab fa-twitter"></i></Link>
+                    <Link href="#" className="social-icon"><i className="fab fa-instagram"></i></Link>
                 </div>
             </div>
             <div className="footer-bottom">

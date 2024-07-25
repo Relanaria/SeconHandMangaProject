@@ -4,7 +4,7 @@ export default function AboutUs() {
 
     return (
         <div className="about-us">
-            <h1>About Us</h1><br/>
+            <h1 className='aboutUsHeader'>About Us</h1><br/>
             <section className="about-section">
                 <h2>Our Mission</h2>
                 <p>
