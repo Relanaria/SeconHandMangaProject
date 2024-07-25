@@ -1,0 +1,32 @@
+.homepage {
+    text-align: center;
+    color: #fff;
+    padding: 20px;
+}
+
+.description, .catalog-section, .store-section {
+    background-color: rgba(0, 0, 0, 0.6);
+    border: 1px solid #fff;
+    margin: 20px auto;
+    padding: 20px;
+    width: 80%;
+    max-width: 800px;
+    border-radius: 10px;
+}
+
+.description p, .catalog-section p, .store-section p {
+    margin: 0;
+}
+
+.catalog-section, .store-section {
+    margin-top: 30px;
+}
+
+h1 {
+    font-size: 2em;
+    margin-top: 20px;
+}
+
+h2 {
+    font-size: 1.5em;
+}
