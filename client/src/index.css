@@ -8,6 +8,7 @@ body {
   padding: 0;
 }
 
+/* NavBar css START*/
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -55,8 +56,9 @@ body {
 .auth-links a:hover {
   color: #ff79a1;
 }
+/*NavBar css END*/
 
-
+/* footer css START*/
 .footer {
   background-color: #1c1c1c;
   color: #fff;
@@ -108,8 +110,8 @@ body {
 
 .footer-section .social a {
   color: #ff4081;
-  font-size: 1.5em;
-  margin: 0 10px;
+  font-size: 2em;
+  margin: 0 15px;
   transition: color 0.3s;
 }
 
@@ -123,3 +125,18 @@ body {
   padding: 10px 0;
   font-size: 0.9em;
 }
+
+.social-icon {
+  color: #ff4081;
+  font-size: 2.5em;
+  margin: 0 15px;
+  transition: color 0.3s, transform 0.3s;
+}
+
+.social-icon:hover {
+  color: #ff79a1;
+  transform: scale(1.1);
+}
+
+
+/*Footer css END */

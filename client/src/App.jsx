@@ -4,6 +4,8 @@ import NavBar from "./nav-bar/NavBar"
 import Footer from "./footer/Footer";
 import AboutUs from "./about/AboutUs";
 import Catalog from "./catalog/Catalog";
+import '@fortawesome/fontawesome-free/css/all.css';
+
 
 function App() {
 
