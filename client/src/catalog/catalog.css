@@ -1,0 +1,78 @@
+.catalog-page {
+    padding: 20px;
+    text-align: center;
+}
+
+.filter-buttons {
+    margin-bottom: 20px;
+}
+
+.filter-buttons button {
+    margin: 0 10px;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    background-color: rgba(28, 28, 28, 0.8); /* semi-transparent background */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.filter-buttons button:hover {
+    background-color: rgba(255, 64, 129, 0.8); /* hover effect */
+    transform: scale(1.05); /* slight zoom on hover */
+}
+
+.manga-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.manga-panel {
+    position: relative;
+    width: 200px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #fff;
+    text-align: left;
+}
+
+.manga-panel img {
+    width: 100%;
+    height: auto;
+}
+
+.manga-details {
+    padding: 10px;
+}
+
+.manga-details h3 {
+    margin: 10px 0 5px;
+    font-size: 1.2em;
+}
+
+.manga-details p {
+    margin: 0;
+    color: #666;
+}
+
+.details-button {
+    display: none;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    padding: 5px 10px;
+    background-color: #ff4081;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.manga-panel:hover .details-button {
+    display: block;
+}
