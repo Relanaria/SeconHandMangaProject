@@ -1,46 +1,47 @@
-import './catalog.css'
+import React from 'react';
+import './catalog.css';
+import { Link } from 'react-router-dom';
 
-export default function Catalog() {
+function Catalog() {
+    const mangaList = [
+        {
+            title: 'Naruto',
+            author: 'Author Name 1',
+            imageUrl: 'https://upload.wikimedia.org/wikipedia/en/9/94/NarutoCoverTankobon1.jpg'
+        },
+        {
+            title: 'DoroHedoro',
+            author: 'Author Name 2',
+            imageUrl: 'https://m.media-amazon.com/images/M/MV5BNzIxODYzMjYtYTU3My00MzU1LWIyYmItZjRjM2NhYTU4NjQxXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_.jpg'
+        },
+        {
+            title: 'The Beginning After the End',
+            author: 'Author Name 3',
+            imageUrl: 'https://m.media-amazon.com/images/I/81jzTuXiB9L._AC_UF1000,1000_QL80_.jpg'
+        }
+    ];
+
     return (
-        <div className="catalog-page">
-            <div className="filter-buttons">
-                <button>All</button>
-                <button>Fantasy</button>
-                <button>Adventure</button>
-                <button>Sci-Fi</button>
-                <button>Romance</button>
-            </div>
-            <div className="manga-container">
-                <MangaPanel 
-                    image='https://m.media-amazon.com/images/M/MV5BZmQ5NGFiNWEtMmMyMC00MDdiLTg4YjktOGY5Yzc2MDUxMTE1XkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_QL75_UY281_CR1,0,190,281_.jpg'
-                    name="Naruto"
-                    author="Author Name 1"
-                />
-                <MangaPanel 
-                    image='https://m.media-amazon.com/images/M/MV5BNzIxODYzMjYtYTU3My00MzU1LWIyYmItZjRjM2NhYTU4NjQxXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_.jpg'
-                    name="DoroHedoro"
-                    author="Author Name 2"
-                />
-                <MangaPanel 
-                    image='https://m.media-amazon.com/images/I/81jzTuXiB9L._AC_UF1000,1000_QL80_.jpg'
-                    name="The Begging afte the End"
-                    author="Author Name 3"
-                />
-            </div>
+        <div className="catalog-container">
+        <div className="catalog-filters">
+            <button>All</button>
+            <button>Fantasy</button>
+            <button>Adventure</button>
+            <button>Sci-Fi</button>
+            <button>Romance</button>
         </div>
+        <div className="catalog-items">
+            {mangaList.map((manga, index) => (
+                <div className="catalog-item" key={index}>
+                    <img src={manga.imageUrl} alt={manga.title} class="img-fluid"/>
+                    <h3>{manga.title}</h3>
+                    <p>{manga.author}</p>
+                    <Link to={manga.detailsUrl} className="details-link">Details</Link>
+                </div>
+            ))}
+        </div>
+    </div>
     );
 }
 
-//TODO move this to another directory under current one!!!
-function MangaPanel({ image, name, author }) {
-    return (
-        <div className="manga-panel">
-            <img src={image} alt={name} />
-            <div className="manga-details">
-                <h3>{name}</h3>
-                <p>{author}</p>
-                <button className="details-button">Details</button>
-            </div>
-        </div>
-    );
-}
+export default Catalog;

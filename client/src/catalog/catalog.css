@@ -1,78 +1,76 @@
-.catalog-page {
+.catalog-container {
     padding: 20px;
     text-align: center;
 }
 
-.filter-buttons {
+.catalog-filters {
+    display: flex;
+    justify-content: center;
     margin-bottom: 20px;
 }
+.img-fluid {
+    width: 250px;
+    height: 300px;
+  }
 
-.filter-buttons button {
-    margin: 0 10px;
-    padding: 10px 20px;
-    font-size: 1em;
-    cursor: pointer;
-    background-color: rgba(28, 28, 28, 0.8); /* semi-transparent background */
+.catalog-filters button {
+    background-color: rgba(28, 28, 28, 0.8);
     color: #fff;
     border: none;
+    padding: 10px 20px;
+    margin: 0 10px;
+    font-size: 1.2em;
     border-radius: 5px;
+    cursor: pointer;
     transition: background-color 0.3s, transform 0.3s;
 }
 
-.filter-buttons button:hover {
-    background-color: rgba(255, 64, 129, 0.8); /* hover effect */
-    transform: scale(1.05); /* slight zoom on hover */
+.catalog-filters button:hover {
+    background-color: #ff4081;
+    transform: scale(1.05);
 }
 
-.manga-container {
+.catalog-items {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
 }
 
-.manga-panel {
-    position: relative;
-    width: 200px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    overflow: hidden;
-    background-color: #fff;
-    text-align: left;
-}
-
-.manga-panel img {
-    width: 100%;
-    height: auto;
-}
-
-.manga-details {
+.catalog-item {
+    background-color: rgba(28, 28, 28, 0.8);
     padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    width: 200px;
+    transition: transform 0.3s;
+    position: relative;
+    overflow: hidden;
 }
 
-.manga-details h3 {
-    margin: 10px 0 5px;
-    font-size: 1.2em;
+.catalog-item img {
+    width: 100%;
+    border-radius: 10px;
 }
 
-.manga-details p {
-    margin: 0;
-    color: #666;
+.catalog-item h3, .catalog-item p {
+    margin: 10px 0;
+    color: #fff; 
 }
 
-.details-button {
-    display: none;
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    padding: 5px 10px;
+.details-link {
+    display: inline-block;
     background-color: #ff4081;
     color: #fff;
-    border: none;
+    padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    text-decoration: none;
+    font-size: 1em;
+    margin-top: 10px;
 }
 
-.manga-panel:hover .details-button {
-    display: block;
+.catalog-item:hover {
+    transform: scale(1.05);
 }

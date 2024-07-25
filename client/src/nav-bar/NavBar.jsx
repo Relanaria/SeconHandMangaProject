@@ -18,8 +18,8 @@ export default function NavBar() {
                 <li><Link to="/catalog">Catalog</Link></li>
                 <li><Link to="/store">Store</Link></li>
                 {activeUser && <li><Link to="/createItem">List Product</Link></li>}
-                <li><Link to="/about">About</Link></li>
-                <li><Link to="/contact">Contact Us</Link></li>
+                <li><Link to="/about">About Us</Link></li>
+                <li><Link to="/contact-us">Contact Us</Link></li>
             </ul>
             <div className="auth-links">
                 {!activeUser && (

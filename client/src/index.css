@@ -36,7 +36,7 @@ body {
 .nav-links li a:visited, .auth-links li a:visited {
   color: #fff;
   text-decoration: none;
-  font-size: 1.5em; /* Increased font size */
+  font-size: 1.5em;
   transition: color 0.3s;
 }
 
@@ -79,7 +79,7 @@ body {
   padding: 0;
 }
 .footer-section ul li {
-  margin: 5px 15px 5px 0; /* Adding spacing to the right of the links */
+  margin: 5px 15px 5px 0;
 }
 .footer-section ul {
   list-style: none;
@@ -102,7 +102,7 @@ body {
 .footer-section ul li a, .footer-section ul li a:visited {
   color: #ff4081;
   text-decoration: none;
-  font-size: 1.3em; /* Increased font size */
+  font-size: 1.3em;
   transition: color 0.3s;
 }
 
