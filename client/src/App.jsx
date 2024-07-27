@@ -8,7 +8,8 @@ import AboutUs from "./about/AboutUs";
 import NavBar from "./nav-bar/NavBar";
 import Footer from "./footer/Footer";
 import Login from './login/Login';
-
+//TODO add bring to top button
+//TODO Web Accs Standar
 
 function App() {
 
@@ -17,7 +18,6 @@ function App() {
     <>
       <NavBar />
     <main>
-
       <Routes>
         <Route path="/" element={<HomePage />}/>
         <Route path="/catalog" element={<Catalog/>} />
