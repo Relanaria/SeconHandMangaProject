@@ -28,7 +28,7 @@ export default function NavBar() {
                         <li><Link to="/register">Register</Link></li>
                     </>
                 )}
-                {activeUser && <Link to="/logout">Logout</Link>}
+                {activeUser && <li><Link to="/logout">Logout</Link></li>}
             </div>
         </nav>
     );
