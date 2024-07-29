@@ -1,8 +1,10 @@
 import React from 'react';
 import './catalog.css';
-import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import CatalotItem from './catalog-item/CatalogItem';
 
 function Catalog() {
+    const [mangaBooks, setMangaBooks] = useState([]);
     const mangaList = [
         {
             title: 'Naruto',
@@ -20,6 +22,17 @@ function Catalog() {
             imageUrl: 'https://m.media-amazon.com/images/I/81jzTuXiB9L._AC_UF1000,1000_QL80_.jpg'
         }
     ];
+    const baseUrl = 'http://localhost:3030/jsonstore/manga/mangas';
+
+    useEffect(() => {
+
+        (async () =>{
+            const response = await fetch(baseUrl);
+            const result = await response.json();
+            setMangaBooks(Object.values(result));
+        })();
+    },[])
+
 
     return (
         <div className="catalog-container">
@@ -31,14 +44,7 @@ function Catalog() {
             <button>Romance</button>
         </div>
         <div className="catalog-items">
-            {mangaList.map((manga, index) => (
-                <div className="catalog-item" key={index}>
-                    <img src={manga.imageUrl} alt={manga.title} class="img-fluid"/>
-                    <h3>{manga.title}</h3>
-                    <p>{manga.author}</p>
-                    <Link to={manga.detailsUrl} className="details-link">Details</Link>
-                </div>
-            ))}
+            {mangaBooks.map(manga => <CatalotItem key={manga._id} manga={manga}/>)}
         </div>
     </div>
     );
