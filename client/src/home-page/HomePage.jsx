@@ -1,6 +1,9 @@
 import './homePage.css';
+import { useState, useEffect } from 'react';
 
 export default function HomePage(){
+
+    
 
     return(
         <div className="homepage">
