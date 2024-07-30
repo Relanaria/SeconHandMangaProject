@@ -1,9 +1,22 @@
-import './homePage.css';
 import { useState, useEffect } from 'react';
+import './homePage.css';
+import LatestAdditions from './latest-additions/LatestAdditions';
+const baseUrl = `http://localhost:3030/data/productList?sortBy=_createdOn%20desc`
+
 
 export default function HomePage(){
+    const [latestAddedMangas, setLatest] = useState([]);
 
-    
+    useEffect(() =>{
+
+        (async () =>{
+            console.log('tes');
+            const response = await fetch(baseUrl);
+            const result = await response.json();
+            setLatest(result);
+        })();
+      
+    },[])
 
     return(
         <div className="homepage">
@@ -13,15 +26,17 @@ export default function HomePage(){
         </div>
         <div className="catalog-section">
             <h2>Latest additions to catalog!</h2>
-            <p>Last 3 added, for now they will be static HTML, later on Ill get them from the server</p>
+
+            <div className="manga-panels">
+            {latestAddedMangas.map(manga => <LatestAdditions key={manga._id} manga={manga}/>)}
+            </div>
+
         </div>
         <div className="store-section">
             <h2>Latest additions to store!</h2>
-            <p>Last 3 added to store, for now they will be static, later on Ill get them from the server</p>
-            <p>Last 3 added to store, for now they will be static, later on Ill get them from the server</p>
-            <p>Last 3 added to store, for now they will be static, later on Ill get them from the server</p>
-            <p>Last 3 added to store, for now they will be static, later on Ill get them from the server</p>
-            <p>Last 3 added to store, for now they will be static, later on Ill get them from the server</p>
+            <div className="manga-panels">
+            {latestAddedMangas.map(manga => <LatestAdditions key={manga._id} manga={manga}/>)}
+            </div>
         </div>
     </div>
     )
