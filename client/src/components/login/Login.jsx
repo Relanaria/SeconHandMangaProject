@@ -22,6 +22,7 @@ function Login() {
                 <div className="form-group">
                     <label htmlFor="email">Email</label>
                     <input
+                        placeholder='email'
                         type="email"
                         id="email"
                         name="email"
@@ -33,6 +34,7 @@ function Login() {
                 <div className="form-group">
                     <label htmlFor="password">Password</label>
                     <input
+                        placeholder='password'
                         type="password"
                         id="password"
                         name="password"

@@ -1,49 +1,61 @@
 // src/listProduct/ListProduct.jsx
 import { useState } from "react";
+import { useForm } from "../../hooks/useForm";
 import "./createItem.css"
 
 export default function CreateItem() {
-    const [title, setTitle] = useState("");
-    const [author, setAuthor] = useState("");
-    const [description, setDescription] = useState("");
-    const [genres, setGenres] = useState([]);
-    const [volume, setVolume] = useState("");
-    const [state, setState] = useState("");
 
-    const handleGenreChange = (e) => {
-        const value = Array.from(e.target.selectedOptions, option => option.value);
-        setGenres(value);
-    };
+    const initialValues = {
+        title: "",
+        author: "",
+        description: "",
+        genres: "",
+        volume: "",
+        state: "",
+    }
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        const manga = {
-            title,
-            author,
-            description,
-            genres,
-            volume: parseInt(volume, 10),
-            state
-        };
-        console.log(manga);
-        // Send manga object to the server here
-    };
+    const formSubmitHanlder = (values) =>{
+        console.log('Form Submited!');
+        console.log(values);
+    }
+
+    const {values, changeHandler, submitHandler} = useForm(initialValues, formSubmitHanlder)
 
     return (
         <div className="create-item-container">
         <h1>List a New Product</h1>
-        <form>
+        <form onSubmit={submitHandler}>
             <label htmlFor="title">Title:</label>
-            <input type="text" id="title" name="title" />
+            <input 
+            placeholder="title" 
+            type="text" 
+            id="title" 
+            name="title"
+            value={values.title}
+            onChange={changeHandler}
+            />
 
             <label htmlFor="author">Author:</label>
-            <input type="text" id="author" name="author" />
+            <input 
+            placeholder="author" 
+            type="text" 
+            id="author" 
+            name="author"
+            value={values.author}
+            onChange={changeHandler}
+            />
 
             <label htmlFor="description">Description:</label>
-            <textarea id="description" name="description"></textarea>
+            <textarea 
+            placeholder='description' 
+            id="description" 
+            name="description"
+            value={values.description}
+            onChange={changeHandler}
+            ></textarea>
 
             <label htmlFor="genres">Genres:</label>
-            <select id="genres" name="genres" multiple>
+            <select id="genres" name="genres" onChange={changeHandler} multiple>
                 <option value="fantasy">Fantasy</option>
                 <option value="adventure">Adventure</option>
                 <option value="sci-fi">Sci-Fi</option>
@@ -51,10 +63,24 @@ export default function CreateItem() {
             </select>
 
             <label htmlFor="volume">Volume:</label>
-            <input type="number" id="volume" name="volume" />
+            <input 
+            placeholder="volume" 
+            type="number" 
+            id="volume" 
+            name="volume"
+            value={values.volume}
+            onChange={changeHandler}
+            />
 
             <label htmlFor="state">State:</label>
-            <input type="text" id="state" name="state" />
+            <input 
+            placeholder="state" 
+            type="text" 
+            id="state" 
+            name="state"
+            value={values.state}
+            onChange={changeHandler}
+            />
 
             <button type="submit">Submit</button>
         </form>

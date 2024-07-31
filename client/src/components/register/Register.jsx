@@ -1,5 +1,5 @@
-import { useForm } from '../../hooks/useForm';
 import React, { useState } from 'react';
+import { useForm } from '../../hooks/useForm';
 import './register.css'; 
 
 function Register() {
@@ -26,44 +26,48 @@ function Register() {
                 <div className="form-group">
                     <label htmlFor="email">Email</label>
                     <input
+                        placeholder='email'
                         type="email"
                         id="email"
-                        name={initialValues.email}
-                        value={values.email}
+                        name="email"
                         onChange={changeHandler}
+                        vlaue={values.email}
                         required
                     />
                 </div>
                 <div className="form-group">
                     <label htmlFor="username">Username</label>
                     <input
+                        placeholder='text'
                         type="text"
                         id="username"
-                        name={initialValues.username}
-                        value={values.username}
+                        name="username"
                         onChange={changeHandler}
+                        vlaue={values.username}
                         required
                     />
                 </div>
                 <div className="form-group">
                     <label htmlFor="password">Password</label>
                     <input
+                        placeholder='password'
                         type="password"
                         id="password"
-                        name={initialValues.password}
-                        value={values.password}
+                        name="password"
                         onChange={changeHandler}
+                        vlaue={values.password}
                         required
                     />
                 </div>
                 <div className="form-group">
                     <label htmlFor="confirmPassword">Confirm Password</label>
                     <input
+                        placeholder='confirmPassword'
                         type="password"
                         id="confirmPassword"
-                        name={initialValues.confirmPassword}
-                        value={values.confirmPassword}
+                        name="confirmPassword"
                         onChange={changeHandler}
+                        vlaue={values.confirmPassword}
                         required
                     />
                 </div>
