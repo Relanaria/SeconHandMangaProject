@@ -12,7 +12,7 @@ export function useForm(initialValues, submitCallback) {
 
     const submitHandler = (e) => {
         e.preventDefault();
-
+        // On submit validation maybe?
         submitCallback(values);
     };
 

@@ -1,43 +1,36 @@
+import { useForm } from '../../hooks/useForm';
 import React, { useState } from 'react';
-import './register.css';
+import './register.css'; 
 
 function Register() {
-    const [formData, setFormData] = useState({
+
+
+    const initialValues = {
         email: '',
         username: '',
         password: '',
         confirmPassword: ''
-    });
-
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({
-            ...formData,
-            [name]: value
-        });
     };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        if (formData.password !== formData.confirmPassword) {
-            alert('Passwords do not match.');
-            return;
-        }
-        console.log('Form data submitted:', formData);
+    const formSubmitHanlder = (values) =>{
+        console.log('Form Submited!');
+        console.log(values);
     };
+
+    const {values, changeHandler, submitHandler} = useForm(initialValues, formSubmitHanlder);
 
     return (
         <div className="register-container">
             <h1>Register</h1>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={submitHandler}>
                 <div className="form-group">
                     <label htmlFor="email">Email</label>
                     <input
                         type="email"
                         id="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
+                        name={initialValues.email}
+                        value={values.email}
+                        onChange={changeHandler}
                         required
                     />
                 </div>
@@ -46,9 +39,9 @@ function Register() {
                     <input
                         type="text"
                         id="username"
-                        name="username"
-                        value={formData.username}
-                        onChange={handleChange}
+                        name={initialValues.username}
+                        value={values.username}
+                        onChange={changeHandler}
                         required
                     />
                 </div>
@@ -57,9 +50,9 @@ function Register() {
                     <input
                         type="password"
                         id="password"
-                        name="password"
-                        value={formData.password}
-                        onChange={handleChange}
+                        name={initialValues.password}
+                        value={values.password}
+                        onChange={changeHandler}
                         required
                     />
                 </div>
@@ -68,9 +61,9 @@ function Register() {
                     <input
                         type="password"
                         id="confirmPassword"
-                        name="confirmPassword"
-                        value={formData.confirmPassword}
-                        onChange={handleChange}
+                        name={initialValues.confirmPassword}
+                        value={values.confirmPassword}
+                        onChange={changeHandler}
                         required
                     />
                 </div>
