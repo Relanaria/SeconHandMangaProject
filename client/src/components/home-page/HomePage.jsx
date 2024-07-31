@@ -1,22 +1,10 @@
-import { useState, useEffect } from 'react';
-import './homePage.css';
+import { useFetch } from '../../hooks/useFetch';
 import LatestAdditions from './latest-additions/LatestAdditions';
-const baseUrl = `http://localhost:3030/data/productList?sortBy=_createdOn%20desc`
-
+import './homePage.css';
 
 export default function HomePage(){
-    const [latestAddedMangas, setLatest] = useState([]);
-
-    useEffect(() =>{
-
-        (async () =>{
-            console.log('tes');
-            const response = await fetch(baseUrl);
-            const result = await response.json();
-            setLatest(result);
-        })();
-      
-    },[])
+    const baseUrl = `http://localhost:3030/data/productList?sortBy=_createdOn%20desc`;
+    const {data: latestAddedMangas} = useFetch(baseUrl, []);
 
     return(
         <div className="homepage">
@@ -26,11 +14,9 @@ export default function HomePage(){
         </div>
         <div className="catalog-section">
             <h2>Latest additions to catalog!</h2>
-
             <div className="manga-panels">
             {latestAddedMangas.map(manga => <LatestAdditions key={manga._id} manga={manga}/>)}
             </div>
-
         </div>
         <div className="store-section">
             <h2>Latest additions to store!</h2>

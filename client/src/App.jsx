@@ -1,13 +1,13 @@
 import '@fortawesome/fontawesome-free/css/all.css';
 import { Route, Routes } from "react-router-dom";
-import ContactUs from "./contact-us/ContactUs";
-import HomePage from "./home-page/HomePage";
-import Register from './register/Register';
-import Catalog from "./catalog/Catalog";
-import AboutUs from "./about/AboutUs";
-import NavBar from "./nav-bar/NavBar";
-import Footer from "./footer/Footer";
-import Login from './login/Login';
+import ContactUs from "./components/contact-us/ContactUs";
+import HomePage from "./components/home-page/HomePage";
+import Register from './components/register/Register';
+import Catalog from "./components/catalog/Catalog";
+import AboutUs from "./components/about/AboutUs";
+import NavBar from "./components/nav-bar/NavBar";
+import Footer from "./components/footer/Footer";
+import Login from './components/login/Login';
 //TODO add bring to top button
 //TODO Web Accs Standar
 
