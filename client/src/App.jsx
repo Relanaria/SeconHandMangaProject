@@ -1,5 +1,6 @@
 import '@fortawesome/fontawesome-free/css/all.css';
 import { Route, Routes } from "react-router-dom";
+import CreateItem from './components/create-item/CreateItem';
 import ContactUs from "./components/contact-us/ContactUs";
 import HomePage from "./components/home-page/HomePage";
 import Register from './components/register/Register';
@@ -8,14 +9,23 @@ import AboutUs from "./components/about/AboutUs";
 import NavBar from "./components/nav-bar/NavBar";
 import Footer from "./components/footer/Footer";
 import Login from './components/login/Login';
+import { useState } from 'react';
+import userContext from './contexts/userContext';
 //TODO add bring to top button
 //TODO Web Accs Standar
 
-function App() {
 
+
+function App() {
+const [currentUser, setCurrentUser] = useState('dobri');
+
+const logOut = () =>{
+  setCurrentUser(null);
+}
 
   return (
     <>
+      <userContext.Provider value={ {user: currentUser, logout: logOut} }>
       <NavBar />
     <main>
       <Routes>
@@ -26,10 +36,12 @@ function App() {
         <Route path="/contact-us" element={<ContactUs />} /> 
         <Route path="/login" element={<Login />} /> 
         <Route path="/register" element={<Register />} /> 
+        <Route path='/createItem' element={<CreateItem />}/>
 
       </Routes>
     </main>
 
+      </userContext.Provider>
       <Footer />
     </>
   );

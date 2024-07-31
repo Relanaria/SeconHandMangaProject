@@ -1,9 +1,18 @@
-import { useState } from "react";
+import userContext from "../../contexts/userContext";
+import { useState, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 export default function NavBar() {
-
-    const [activeUser, setActiveUser] = useState(false)
+    const [activeUser, setActiveUser] = useState(false);
+    const {user, logout} = useContext(userContext);
+    // remember to remove onClick event from logoutLink
+    useEffect(() => {
+        if (user) {
+            setActiveUser(true);
+        } else {
+            setActiveUser(false);
+        }
+    }, [user]);
 
     return (
         <nav className="navbar">
@@ -28,10 +37,10 @@ export default function NavBar() {
                         <li><Link to="/register">Register</Link></li>
                     </>
                 )}
-                {activeUser && <li><Link to="/logout">Logout</Link></li>}
+                {activeUser && <li><Link to="/logout" onClick={logout}>Logout</Link></li>}
             </div>
         </nav>
     );
-}
+};
 
 
