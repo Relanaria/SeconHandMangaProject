@@ -35,6 +35,7 @@ function ContactUs() {
                         name="name"
                         value={formData.name}
                         onChange={handleChange}
+                        placeholder='name'
                         required
                     />
                 </div>
@@ -44,6 +45,7 @@ function ContactUs() {
                         type="email"
                         id="email"
                         name="email"
+                        placeholder='email'
                         value={formData.email}
                         onChange={handleChange}
                         required
@@ -54,6 +56,7 @@ function ContactUs() {
                     <textarea
                         id="message"
                         name="message"
+                        placeholder='message'
                         value={formData.message}
                         onChange={handleChange}
                         required
