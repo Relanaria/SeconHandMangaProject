@@ -1,42 +1,32 @@
 import React, { useState } from 'react';
+import { useForm } from '../../hooks/useForm';
 import './login.css';
 
 function Login() {
-    const [formData, setFormData] = useState({
+    const initialValues = {
         email: '',
         password: '',
-        notRobot: false
-    });
-
-    const handleChange = (e) => {
-        const { name, value, type, checked } = e.target;
-        setFormData({
-            ...formData,
-            [name]: type === 'checkbox' ? checked : value
-        });
     };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        if (!formData.notRobot) {
-            alert('Please verify you are not a robot.');
-            return;
-        }
-        console.log('Form data submitted:', formData);
-    };
+    const formSubmitHanlder = (values) =>{
+        console.log('Form Submited!');
+        console.log(values);
+    }
+
+    const {values, changeHandler, submitHandler} = useForm(initialValues, formSubmitHanlder)
 
     return (
         <div className="login-container">
             <h1>Login</h1>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={submitHandler}>
                 <div className="form-group">
                     <label htmlFor="email">Email</label>
                     <input
                         type="email"
                         id="email"
                         name="email"
-                        value={formData.email}
-                        onChange={handleChange}
+                        value={values.email}
+                        onChange={changeHandler}
                         required
                     />
                 </div>
@@ -46,8 +36,8 @@ function Login() {
                         type="password"
                         id="password"
                         name="password"
-                        value={formData.password}
-                        onChange={handleChange}
+                        value={values.password}
+                        onChange={changeHandler}
                         required
                     />
                 </div>
