@@ -2,6 +2,7 @@ import { useFetch } from '../../hooks/useFetch';
 import React from 'react';
 import './catalog.css';
 import CatalotItem from './catalog-item/CatalogItem';
+import Spinner from '../spinner/Spinner';
 
 function Catalog() {
     const baseUrl = 'http://localhost:3030/data/productList';
@@ -17,7 +18,7 @@ function Catalog() {
             <button>Romance</button>
         </div>
         <div className="catalog-items">
-            {mangaBooks.map(manga => <CatalotItem key={manga._id} manga={manga}/>)}
+            {mangaBooks.length > 0 ?(mangaBooks.map(manga => <CatalotItem key={manga._id} manga={manga}/>)) : <Spinner/> }
         </div>
     </div>
     );

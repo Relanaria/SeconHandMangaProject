@@ -1,6 +1,7 @@
 import { useFetch } from '../../hooks/useFetch';
 import LatestAdditions from './latest-additions/LatestAdditions';
 import './homePage.css';
+import Spinner from '../spinner/Spinner';
 
 export default function HomePage(){
     const baseUrl = `http://localhost:3030/data/productList?sortBy=_createdOn%20desc`;
@@ -15,13 +16,13 @@ export default function HomePage(){
         <div className="catalog-section">
             <h2>Latest additions to catalog!</h2>
             <div className="manga-panels">
-            {latestAddedMangas.map(manga => <LatestAdditions key={manga._id} manga={manga}/>)}
+                {latestAddedMangas.length > 0 ? latestAddedMangas.map(manga => <LatestAdditions key={manga._id} manga={manga}/>) : <Spinner />}
             </div>
         </div>
         <div className="store-section">
             <h2>Latest additions to store!</h2>
             <div className="manga-panels">
-            {latestAddedMangas.map(manga => <LatestAdditions key={manga._id} manga={manga}/>)}
+                {latestAddedMangas.length > 0 ? latestAddedMangas.map(manga => <LatestAdditions key={manga._id} manga={manga}/>) : <Spinner />}
             </div>
         </div>
     </div>
