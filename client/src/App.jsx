@@ -1,8 +1,10 @@
 import '@fortawesome/fontawesome-free/css/all.css';
 import { Route, Routes } from "react-router-dom";
 import CreateItem from './components/create-item/CreateItem';
+import MangaDetails from './components/details/MangaDetails';
 import ContactUs from "./components/contact-us/ContactUs";
 import HomePage from "./components/home-page/HomePage";
+import NotFound from './components/not-found/NotFound';
 import Register from './components/register/Register';
 import Catalog from "./components/catalog/Catalog";
 import AboutUs from "./components/about/AboutUs";
@@ -30,13 +32,18 @@ const logOut = () =>{
     <main>
       <Routes>
         <Route path="/" element={<HomePage />}/>
+
         <Route path="/catalog" element={<Catalog />} />
         <Route path="/store" element={<Catalog />} /> 
+        <Route path="/store/:id/details" element={<MangaDetails />} /> 
+        <Route path='/createItem' element={<CreateItem />}/>
+
         <Route path="/about" element={<AboutUs />} />
         <Route path="/contact-us" element={<ContactUs />} /> 
         <Route path="/login" element={<Login />} /> 
         <Route path="/register" element={<Register />} /> 
-        <Route path='/createItem' element={<CreateItem />}/>
+
+        <Route path="*" element={<NotFound />} /> 
 
       </Routes>
     </main>

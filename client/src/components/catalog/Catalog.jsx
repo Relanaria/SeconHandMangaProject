@@ -1,12 +1,24 @@
 import { useFetch } from '../../hooks/useFetch';
-import React from 'react';
-import './catalog.css';
+import { useState, useEffect} from 'react';
+
+import { getAllManga } from '../../api/manga-api';
+
 import CatalotItem from './catalog-item/CatalogItem';
 import Spinner from '../spinner/Spinner';
+import React from 'react';
+import './catalog.css';
 
 function Catalog() {
-    const baseUrl = 'http://localhost:3030/data/productList';
-    const {data: mangaBooks} = useFetch(baseUrl, []);
+    const [mangaBooks, setMangaBooks] = useState([]);
+    // const baseUrl = 'http://localhost:3030/data/productList';
+    // const {data: mangaBooks} = useFetch(baseUrl, []);
+
+    useEffect(()=>{
+       (async()=>{
+            const result = await getAllManga();
+            setMangaBooks(result);
+        })();
+    }, [])
 
     return (
         <div className="catalog-container">
@@ -18,7 +30,7 @@ function Catalog() {
             <button>Romance</button>
         </div>
         <div className="catalog-items">
-            {mangaBooks.length > 0 ?(mangaBooks.map(manga => <CatalotItem key={manga._id} manga={manga}/>)) : <Spinner/> }
+            {mangaBooks.length > 0 ? (mangaBooks.map(manga => <CatalotItem key={manga._id} manga={manga}/>)) : <Spinner/> }
         </div>
     </div>
     );
