@@ -7,7 +7,7 @@ export default function LatestAdditions({manga}) {
       <div className="manga-info">
         <h3 className="manga-title">{manga.title}</h3>
         <p className="manga-author">{manga.author}</p>
-        <Link to={`/details/${manga._id}`} className="details-button">Details</Link>
+        <Link to={`/catalog/${manga._id}/details`} className="details-button">Details</Link>
       </div>
     </div>
     )

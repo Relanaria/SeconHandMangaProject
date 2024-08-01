@@ -1,7 +1,7 @@
 import { useFetch } from '../../hooks/useFetch';
 import { useState, useEffect} from 'react';
 
-import { getAllManga } from '../../api/manga-api';
+import mangaAPI from '../../api/manga-api';
 
 import CatalotItem from './catalog-item/CatalogItem';
 import Spinner from '../spinner/Spinner';
@@ -15,7 +15,7 @@ function Catalog() {
 
     useEffect(()=>{
        (async()=>{
-            const result = await getAllManga();
+            const result = await mangaAPI.getAllManga();
             setMangaBooks(result);
         })();
     }, [])

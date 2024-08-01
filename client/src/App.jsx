@@ -17,7 +17,6 @@ import userContext from './contexts/userContext';
 //TODO Web Accs Standar
 
 
-
 function App() {
 const [currentUser, setCurrentUser] = useState('dobri');
 
@@ -34,8 +33,10 @@ const logOut = () =>{
         <Route path="/" element={<HomePage />}/>
 
         <Route path="/catalog" element={<Catalog />} />
+        <Route path="/catalog/:mangaId/details" element={<MangaDetails />} /> 
+
         <Route path="/store" element={<Catalog />} /> 
-        <Route path="/store/:id/details" element={<MangaDetails />} /> 
+        <Route path="/store/:mangaId/details" element={<MangaDetails />} /> 
         <Route path='/createItem' element={<CreateItem />}/>
 
         <Route path="/about" element={<AboutUs />} />
