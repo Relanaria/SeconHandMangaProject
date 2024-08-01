@@ -1,7 +1,11 @@
-import '@fortawesome/fontawesome-free/css/all.css';
 import { Route, Routes } from "react-router-dom";
+import userContext from './contexts/userContext';
+import { useState } from 'react';
+
+import '@fortawesome/fontawesome-free/css/all.css';
+import StoreMangaDetails from './components/details/store-details/StoreMangaDetails';
 import CreateItem from './components/create-item/CreateItem';
-import MangaDetails from './components/details/MangaDetails';
+import CatalogMangaDetails from './components/details/catalog-details/CatalogMangaDetails';
 import ContactUs from "./components/contact-us/ContactUs";
 import HomePage from "./components/home-page/HomePage";
 import NotFound from './components/not-found/NotFound';
@@ -11,8 +15,7 @@ import AboutUs from "./components/about/AboutUs";
 import NavBar from "./components/nav-bar/NavBar";
 import Footer from "./components/footer/Footer";
 import Login from './components/login/Login';
-import { useState } from 'react';
-import userContext from './contexts/userContext';
+import Store from './components/store/Store';
 //TODO add bring to top button
 //TODO Web Accs Standar
 
@@ -33,10 +36,11 @@ const logOut = () =>{
         <Route path="/" element={<HomePage />}/>
 
         <Route path="/catalog" element={<Catalog />} />
-        <Route path="/catalog/:mangaId/details" element={<MangaDetails />} /> 
+        <Route path="/catalog/:mangaId/details" element={<CatalogMangaDetails />} /> 
 
-        <Route path="/store" element={<Catalog />} /> 
-        <Route path="/store/:mangaId/details" element={<MangaDetails />} /> 
+        <Route path="/store" element={<Store />} /> 
+        <Route path="/store/:mangaId/details" element={<StoreMangaDetails />} /> 
+
         <Route path='/createItem' element={<CreateItem />}/>
 
         <Route path="/about" element={<AboutUs />} />

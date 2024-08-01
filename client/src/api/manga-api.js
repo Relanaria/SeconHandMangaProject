@@ -1,10 +1,10 @@
 import * as request from "./requester";
 
-const BASE_URL = 'http://localhost:3030/data/productList';
+const BASE_URL = 'http://localhost:3030/data/';
 
-export const getAllManga = () =>  request.get(BASE_URL);
+export const getAllManga = (directory) =>  request.get(`${BASE_URL}/${directory}`);
 
-export const getMangaById = (mangaId) => request.get(`${BASE_URL}/${mangaId}`);
+export const getMangaById = (directory, mangaId) => request.get(`${BASE_URL}/${directory}/${mangaId}`);
 
 const mangaAPI = {
     getAllManga,

@@ -12,10 +12,11 @@ function Catalog() {
     const [mangaBooks, setMangaBooks] = useState([]);
     // const baseUrl = 'http://localhost:3030/data/productList';
     // const {data: mangaBooks} = useFetch(baseUrl, []);
+     const directory = 'catalogList'
 
     useEffect(()=>{
        (async()=>{
-            const result = await mangaAPI.getAllManga();
+            const result = await mangaAPI.getAllManga(directory);
             setMangaBooks(result);
         })();
     }, [])
