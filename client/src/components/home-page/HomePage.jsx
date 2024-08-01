@@ -1,11 +1,32 @@
-import { useFetch } from '../../hooks/useFetch';
-import LatestAdditions from './latest-additions/LatestAdditions';
-import './homePage.css';
-import Spinner from '../spinner/Spinner';
+import { useEffect, useState } from 'react';
 
-export default function HomePage(){
-    const baseUrl = `http://localhost:3030/data/productList?sortBy=_createdOn%20desc`;
-    const {data: latestAddedMangas} = useFetch(baseUrl, []);
+import { getAllManga } from '../../api/manga-api';
+
+import LatestAdditionsStore from './latest-additions-store/LatestAdditionsStore';
+import LatestAdditionsCatalog from './latest-additions-catalog/LatestAdditionsCatalog';
+import Spinner from '../spinner/Spinner';
+import './homePage.css';
+
+export default function HomePage(){;
+    const [productList, setProductList] = useState([]);
+    const [catalogList, setCatalogList] = useState([]);
+
+
+    const directory = {
+        catalogList: 'catalogList?sortBy=_createdOn%20desc',
+        productList: 'productList?sortBy=_createdOn%20desc'
+    }
+
+    useEffect(()=>{
+        (async () =>{
+            const productListManga = await getAllManga(directory.productList);
+            const catalogListManga = await getAllManga(directory.catalogList);
+            setCatalogList(catalogListManga);
+            setProductList(productListManga);
+        })();
+
+    },[]);
+
 
     return(
         <div className="homepage">
@@ -16,13 +37,13 @@ export default function HomePage(){
         <div className="catalog-section">
             <h2>Latest additions to catalog!</h2>
             <div className="manga-panels">
-                {latestAddedMangas.length > 0 ? latestAddedMangas.map(manga => <LatestAdditions key={manga._id} manga={manga}/>) : <Spinner />}
+                {catalogList.length > 0 ? catalogList.map(manga => <LatestAdditionsCatalog key={manga._id} manga={manga}/>) : <Spinner />}
             </div>
         </div>
         <div className="store-section">
             <h2>Latest additions to store!</h2>
             <div className="manga-panels">
-                {latestAddedMangas.length > 0 ? latestAddedMangas.map(manga => <LatestAdditions key={manga._id} manga={manga}/>) : <Spinner />}
+                {productList.length > 0 ? productList.map(manga => <LatestAdditionsStore key={manga._id} manga={manga}/>) : <Spinner />}
             </div>
         </div>
     </div>

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-export default function LatestAdditions({manga}) {
+export default function LatestAdditionsStore({manga}) {
  
     return(
     <div className="manga-panel">
@@ -7,7 +7,7 @@ export default function LatestAdditions({manga}) {
       <div className="manga-info">
         <h3 className="manga-title">{manga.title}</h3>
         <p className="manga-author">{manga.author}</p>
-        <Link to={`/catalog/${manga._id}/details`} className="details-button">Details</Link>
+        <Link to={`/store/${manga._id}/details`} className="details-button">Details</Link>
       </div>
     </div>
     )
