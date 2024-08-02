@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import { useForm } from '../../hooks/useForm';
+import { useNavigate } from 'react-router-dom';
+
 import './login.css';
 
 import { useLogin } from '../../hooks/useAuth';
 
 export default function Login() {
+    const navigate = useNavigate();
     const initialValues = {
         email: '',
         password: '',
@@ -12,7 +15,15 @@ export default function Login() {
 
     const login = useLogin();
 
-    const {values, changeHandler, submitHandler} = useForm(initialValues, ({email, password}) => login(email, password))
+    const {values, changeHandler, submitHandler} = useForm(initialValues,async ({email, password}) => {
+        try {
+            
+            await login(email, password);
+            navigate('/');
+        } catch (error) {
+            console.log(error.message);
+        }
+    })
 
     return (
         <div className="login-container">
