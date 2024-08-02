@@ -2,18 +2,17 @@ import React, { useState } from 'react';
 import { useForm } from '../../hooks/useForm';
 import './login.css';
 
-function Login() {
+import { useLogin } from '../../hooks/useAuth';
+
+export default function Login() {
     const initialValues = {
         email: '',
         password: '',
     };
 
-    const formSubmitHanlder = (values) =>{
-        console.log('Form Submited!');
-        console.log(values);
-    }
+    const login = useLogin();
 
-    const {values, changeHandler, submitHandler} = useForm(initialValues, formSubmitHanlder)
+    const {values, changeHandler, submitHandler} = useForm(initialValues, ({email, password}) => login(email, password))
 
     return (
         <div className="login-container">
@@ -49,4 +48,4 @@ function Login() {
     );
 }
 
-export default Login;
+

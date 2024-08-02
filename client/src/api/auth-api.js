@@ -2,10 +2,9 @@ import * as request from "./requester";
 
 const BASE_URL = "http://localhost:3030/users";
 
-export async function Login({ email, password }) {
+export async function login(email, password) {
 
+  const authLoginData = await request.post(`${BASE_URL}/login`, { email, password });
 
-  const result = await request.post(`${BASE_URL}/login`, { email, password });
-
-  return result;
+  return authLoginData;
 }

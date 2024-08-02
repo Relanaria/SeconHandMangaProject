@@ -2,6 +2,10 @@ export default async function requester(method, url, data){
 
     const options = {};
 
+    if(method != "GET"){
+        options.method = method;
+    }
+
     if (data != undefined) {
         options.headers = {"Content-Type": "application/json"};
         options.body = JSON.stringify(data);
@@ -12,7 +16,6 @@ export default async function requester(method, url, data){
    const result = await response.json();
 
    return result;
-
 }
 
 

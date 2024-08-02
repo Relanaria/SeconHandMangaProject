@@ -3,11 +3,19 @@
 
 ## Hooks
 - [x] Form hook
-- [ ] Store hook
-- [ ] Login hook
-- [ ] Comment hook
-- [ ] Catalog hook
-- [ ] Register hook
+- [x] Store hook
+- [x] Login hook
+- [x] Comment hook
+- [x] Catalog hook
+- [x] Register hook
+
+## Authentication
+
+- [x] Auth api
+- [x] Auth api hook
+- [ ] Login
+- [ ] Register
+- [ ] Create
 
 
 ## TODO
