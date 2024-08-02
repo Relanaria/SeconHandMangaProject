@@ -1,25 +1,16 @@
-import React, { useContext, useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import { Link, useParams } from 'react-router-dom';
 
-import mangaAPI from '../../../api/manga-api';
+import { useGetOneMangaStore } from '../../../hooks/useMangaStore';
 
 import Spinner from '../../spinner/Spinner';
 
 import './StoreMangaDetails.css';
 
 export default function StoreMangaDetails(props){
-    const [manga, setManga] = useState({});
-    const [isPending, setIsPending] = useState(false);
     const { mangaId } = useParams()
-    const directory = 'productList';
-
-    useEffect(()=>{
-        (async ()=>{
-            const result = await mangaAPI.getMangaById(directory, mangaId);
-            setIsPending(true)
-            setManga(result);
-        })();
-    },[])
+    const [isPending, setIsPending] = useState(false);
+    const [manga, setManga] = useGetOneMangaStore(mangaId, setIsPending);
 
     return (
         <>

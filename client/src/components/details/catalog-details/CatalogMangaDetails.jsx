@@ -2,35 +2,26 @@ import React, { useContext, useEffect, useState} from 'react';
 import { Link, useParams } from 'react-router-dom';
 import userContext from '../../../contexts/AuthContext';
 
-import mangaAPI from '../../../api/manga-api';
+import { useGetOneMangaCatalog } from '../../../hooks/useMangaCatalog';
 
 import Spinner from '../../spinner/Spinner';
 
 import './CatalogMangaDetails.css';
 
 export default function CatalogMangaDetails(props){
-    const [isPending, setIsPending] = useState(true);
-    const [manga, setManga] = useState({});
     const { mangaId } = useParams();
+
+    const [isPending, setIsPending] = useState(true);
+    const [manga, setManga] = useGetOneMangaCatalog(mangaId, setIsPending);
 
     const [newComment, setNewComment] = useState('');
     const [username, setUserName] = useState('');
 
-    const directory = 'productList';
     const userData = useContext(userContext);
-
-    useEffect(()=>{
-        (async ()=>{
-            const result = await mangaAPI.getMangaById(directory, mangaId);
-            setIsPending(false)
-            setManga(result);
-        })();
-    },[])
 
     const commentSubmitHandler = (e) =>{
         e.preventDefault();
         console.log('Comment Submited');
-        console.log(userData);
         console.log(newComment);
     }
 

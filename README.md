@@ -8,3 +8,7 @@
 - [ ] Comment hook
 - [ ] Catalog hook
 - [ ] Register hook
+
+
+## TODO
+- add comments hook
