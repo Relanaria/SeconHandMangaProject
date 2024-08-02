@@ -3,6 +3,7 @@ import { useState } from "react";
 export function useForm(initialValues, submitCallback) {
     const [values, setValues] = useState(initialValues);
 
+    // Doesn't work with checkBox
     const changeHandler = (e) => {
         setValues(prevState => ({
             ...prevState,

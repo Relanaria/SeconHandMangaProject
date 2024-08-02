@@ -1,25 +1,13 @@
-import { useFetch } from '../../hooks/useFetch';
-import { useState, useEffect} from 'react';
-
-import mangaAPI from '../../api/manga-api';
-
 import StoreItem from './store-item/StoreItem';
 import Spinner from '../spinner/Spinner';
 import React from 'react';
 import './store.css';
 
-export default function Store() {
-    const [mangaBooks, setMangaBooks] = useState([]);
-    // const baseUrl = 'http://localhost:3030/data/productList';
-    // const {data: mangaBooks} = useFetch(baseUrl, []);
-    const directory = 'productList';
+import { useGetAllMangaStore } from '../../hooks/useMangaStore';
 
-    useEffect(()=>{
-       (async()=>{
-            const result = await mangaAPI.getAllManga(directory);
-            setMangaBooks(result);
-        })();
-    }, [])
+export default function Store() {
+    const [mangaBooks, setMangaBooks] = useGetAllMangaStore();
+    
 
     return (
         <div className="catalog-container">

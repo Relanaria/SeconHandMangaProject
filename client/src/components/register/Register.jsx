@@ -38,7 +38,7 @@ function Register() {
                 <div className="form-group">
                     <label htmlFor="username">Username</label>
                     <input
-                        placeholder='text'
+                        placeholder='username'
                         type="text"
                         id="username"
                         name="username"

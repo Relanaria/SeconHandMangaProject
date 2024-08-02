@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
-import userContext from './contexts/userContext';
-import { useState } from 'react';
+
+import  AuthContextProvider  from "./contexts/AuthContext";
 
 import '@fortawesome/fontawesome-free/css/all.css';
 import StoreMangaDetails from './components/details/store-details/StoreMangaDetails';
@@ -16,20 +16,13 @@ import NavBar from "./components/nav-bar/NavBar";
 import Footer from "./components/footer/Footer";
 import Login from './components/login/Login';
 import Store from './components/store/Store';
-//TODO add bring to top button
-//TODO Web Accs Standar
 
 
 function App() {
-const [currentUser, setCurrentUser] = useState('dobri');
-
-const logOut = () =>{
-  setCurrentUser(null);
-}
 
   return (
     <>
-      <userContext.Provider value={ {user: currentUser, logout: logOut} }>
+      <AuthContextProvider>
       <NavBar />
     <main>
       <Routes>
@@ -53,7 +46,7 @@ const logOut = () =>{
       </Routes>
     </main>
 
-      </userContext.Provider>
+      </AuthContextProvider>
       <Footer />
     </>
   );

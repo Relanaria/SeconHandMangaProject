@@ -1,31 +1,14 @@
-import { useEffect, useState } from 'react';
-
-import { getAllManga } from '../../api/manga-api';
-
 import LatestAdditionsStore from './latest-additions-store/LatestAdditionsStore';
 import LatestAdditionsCatalog from './latest-additions-catalog/LatestAdditionsCatalog';
 import Spinner from '../spinner/Spinner';
 import './homePage.css';
 
+import { useGetAllMangaCatalog } from '../../hooks/useMangaCatalog';
+import { useGetAllMangaStore } from '../../hooks/useMangaStore';
+
 export default function HomePage(){;
-    const [productList, setProductList] = useState([]);
-    const [catalogList, setCatalogList] = useState([]);
-
-
-    const directory = {
-        catalogList: 'catalogList?sortBy=_createdOn%20desc',
-        productList: 'productList?sortBy=_createdOn%20desc'
-    }
-
-    useEffect(()=>{
-        (async () =>{
-            const productListManga = await getAllManga(directory.productList);
-            const catalogListManga = await getAllManga(directory.catalogList);
-            setCatalogList(catalogListManga);
-            setProductList(productListManga);
-        })();
-
-    },[]);
+    const [storeList, setStoreList] = useGetAllMangaStore();
+    const [catalogList, setCatalogList] = useGetAllMangaCatalog();
 
 
     return(
@@ -43,7 +26,7 @@ export default function HomePage(){;
         <div className="store-section">
             <h2>Latest additions to store!</h2>
             <div className="manga-panels">
-                {productList.length > 0 ? productList.map(manga => <LatestAdditionsStore key={manga._id} manga={manga}/>) : <Spinner />}
+                {storeList.length > 0 ? storeList.map(manga => <LatestAdditionsStore key={manga._id} manga={manga}/>) : <Spinner />}
             </div>
         </div>
     </div>
