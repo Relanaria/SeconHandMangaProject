@@ -25,7 +25,7 @@ export function useGetOneMangaStore(mangaId, setIsPending) {
     useEffect(()=>{
         (async ()=>{
             const result = await mangaAPI.getMangaById(directory, mangaId);
-            setIsPending(true)
+            setIsPending(false)
             setManga(result);
         })();
     },[])

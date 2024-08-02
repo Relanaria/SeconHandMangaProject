@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 export default function NavBar() {
     const [activeUser, setActiveUser] = useState(false);
     const data = useContext(AuthContext);
-    console.log(data);
     // remember to remove onClick event from logoutLink
     // useEffect(() => {
     //     if (user) {

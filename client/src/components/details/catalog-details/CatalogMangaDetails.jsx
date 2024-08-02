@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState} from 'react';
+import React, { useContext, useState} from 'react';
 import { Link, useParams } from 'react-router-dom';
 import userContext from '../../../contexts/AuthContext';
 
@@ -10,7 +10,6 @@ import './CatalogMangaDetails.css';
 
 export default function CatalogMangaDetails(props){
     const { mangaId } = useParams();
-
     const [isPending, setIsPending] = useState(true);
     const [manga, setManga] = useGetOneMangaCatalog(mangaId, setIsPending);
 

@@ -9,12 +9,12 @@ import './StoreMangaDetails.css';
 
 export default function StoreMangaDetails(props){
     const { mangaId } = useParams()
-    const [isPending, setIsPending] = useState(false);
+    const [isPending, setIsPending] = useState(true);
     const [manga, setManga] = useGetOneMangaStore(mangaId, setIsPending);
-
+    
     return (
         <>
-        {isPending ? 
+        {isPending ?  <Spinner/> :
          <div className="details-container">
          <div className="manga-details">
              <div className="manga-image">
@@ -37,8 +37,6 @@ export default function StoreMangaDetails(props){
              </div>
          </div>
      </div>
-        :
-            <Spinner/>
         }
         </>
     )
