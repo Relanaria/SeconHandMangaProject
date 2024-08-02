@@ -18,10 +18,11 @@ export default function Login() {
     const {values, changeHandler, submitHandler} = useForm(initialValues,async ({email, password}) => {
         try {
             
-            await login(email, password);
+          await login(email, password);
+
             navigate('/');
         } catch (error) {
-            console.log(error.message);
+            alert(error.message)
         }
     })
 
