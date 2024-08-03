@@ -1,25 +1,38 @@
 // src/listProduct/ListProduct.jsx
 import { useState } from "react";
 import { useForm } from "../../hooks/useForm";
+import { useNavigate } from "react-router-dom";
+
+import { useCreateManga } from "../../hooks/useCreateManga";
+import { useAuthContext } from "../../contexts/AuthContext";
+
 import "./createItem.css"
 
 export default function CreateItem() {
-
+    const navigate = useNavigate();
     const initialValues = {
         title: "",
         author: "",
         description: "",
         genres: "",
+        imageUrl: "",
         volume: "",
+        price: "",
         state: "",
     }
+    const AuthUserData = useAuthContext();
+    const create = useCreateManga();
 
-    const formSubmitHanlder = (values) =>{
-        console.log('Form Submited!');
-        console.log(values);
-    }
+    const {values, changeHandler, submitHandler} = useForm(initialValues, async (mangaData) => {
 
-    const {values, changeHandler, submitHandler} = useForm(initialValues, formSubmitHanlder)
+        try {
+           const createdManga = await create(mangaData, AuthUserData.accessToken);
+            
+           navigate(`/store/${createdManga._id}/details`)
+        } catch (error) {
+            alert(error.message)
+        }
+    })
 
     return (
         <div className="create-item-container">
@@ -28,7 +41,7 @@ export default function CreateItem() {
             <label htmlFor="title">Title:</label>
             <input 
             placeholder="title" 
-            type="text" 
+            type="input" 
             id="title" 
             name="title"
             value={values.title}
@@ -62,6 +75,16 @@ export default function CreateItem() {
                 <option value="romance">Romance</option>
             </select>
 
+            <label htmlFor="imageUrl">ImageURL:</label>
+            <input 
+            placeholder="imageUrl" 
+            type="text" 
+            id="imageUrl" 
+            name="imageUrl"
+            value={values.ImageUrl}
+            onChange={changeHandler}
+            />
+
             <label htmlFor="volume">Volume:</label>
             <input 
             placeholder="volume" 
@@ -79,6 +102,16 @@ export default function CreateItem() {
             id="state" 
             name="state"
             value={values.state}
+            onChange={changeHandler}
+            />
+
+            <label htmlFor="price">Price:</label>
+            <input 
+            placeholder="price" 
+            type="number" 
+            id="price" 
+            name="price"
+            value={values.price}
             onChange={changeHandler}
             />
 

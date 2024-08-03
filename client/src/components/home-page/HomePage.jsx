@@ -3,12 +3,12 @@ import LatestAdditionsCatalog from './latest-additions-catalog/LatestAdditionsCa
 import Spinner from '../spinner/Spinner';
 import './homePage.css';
 
-import { useGetAllMangaCatalog } from '../../hooks/useMangaCatalog';
-import { useGetAllMangaStore } from '../../hooks/useMangaStore';
+import { useGetAllMangaCatalogLatest } from '../../hooks/useMangaCatalog';
+import { useGetAllMangaStoreLatest } from '../../hooks/useMangaStore';
 
 export default function HomePage(){;
-    const [storeList, setStoreList] = useGetAllMangaStore();
-    const [catalogList, setCatalogList] = useGetAllMangaCatalog();
+    const [storeList, setStoreList] = useGetAllMangaStoreLatest();
+    const [catalogList, setCatalogList] = useGetAllMangaCatalogLatest();
 
 
     return(

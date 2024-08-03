@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import mangaAPI from "../api/manga-api";
 
 const directory = 'productList';
+const directoryForHomePage = 'productList?sortBy=_createdOn%20desc&pageSize=3';
 
 export function useGetAllMangaStore(){
     const [mangaBooks, setMangaBooks] = useState([]);
@@ -17,6 +18,20 @@ export function useGetAllMangaStore(){
 
     return [mangaBooks, setMangaBooks];
 };
+
+export function useGetAllMangaStoreLatest() {
+    const [mangaBooks, setMangaBooks] = useState([]);
+
+    useEffect(()=>{
+       (async()=>{
+            const result = await mangaAPI.getAllManga(directoryForHomePage);
+            setMangaBooks(result);
+        })();
+    }, []);
+
+
+    return [mangaBooks, setMangaBooks];
+}
 
 
 export function useGetOneMangaStore(mangaId, setIsPending) {
