@@ -13,10 +13,11 @@
 
 - [x] Auth api
 - [x] Auth api hook
-- [ ] Login
+- [x] Login
 - [ ] Register
 - [ ] Create
-
+- [ ]  AuthState and Context
+- [ ] Token Managment 
 
 ## TODO
 - add comments hook

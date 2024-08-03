@@ -7,4 +7,12 @@ export async function login(email, password) {
   const authLoginData = await request.post(`${BASE_URL}/login`, { email, password });
 
   return authLoginData;
-}
+};
+
+
+export async function register(userData) {
+
+  const authRegisterData = await request.post(`${BASE_URL}/register`, userData);
+
+  return authRegisterData;
+};

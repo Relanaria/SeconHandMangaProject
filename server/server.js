@@ -1391,6 +1391,22 @@
                     "imgUrl": "https://m.media-amazon.com/images/M/MV5BZmQ5NGFiNWEtMmMyMC00MDdiLTg4YjktOGY5Yzc2MDUxMTE1XkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_QL75_UY281_CR1,0,190,281_.jpg",
                     "_createdOn": 1722351488932,
                     "_id": "8d3248f8-0708-48f7-a681-3bf6f87bbd7b"
+                },
+                "bc7f7fd9-2530-4ad3-941c-a641c578428f": {
+                    "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
+                    "title": "Solo Leveling",
+                    "author": "Chugong",
+                    "description": "In a world where hunters — human warriors who possess supernatural abilities — must battle deadly monsters to protect mankind from certain annihilation, a notoriously weak hunter named Sung Jinwoo finds himself in a seemingly endless struggle for survival.",
+                    "genre": [
+                        "Fantasy",
+                        "Action"
+                    ],
+                    "volume": 5,
+                    "price": 15,
+                    "state": "Perfect",
+                    "imgUrl": "https://upload.wikimedia.org/wikipedia/en/thumb/6/6c/Solo_Leveling_Volume_1_Cover.jpg/220px-Solo_Leveling_Volume_1_Cover.jpg",
+                    "_createdOn": 1722685639107,
+                    "_id": "bc7f7fd9-2530-4ad3-941c-a641c578428f"
                 }
          
         },
