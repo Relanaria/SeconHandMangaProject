@@ -14,8 +14,8 @@ export default function CreateItem() {
         title: "",
         author: "",
         description: "",
-        genres: "",
-        imageUrl: "",
+        genre: "",
+        imgUrl: "",
         volume: "",
         price: "",
         state: "",
@@ -67,21 +67,21 @@ export default function CreateItem() {
             onChange={changeHandler}
             ></textarea>
 
-            <label htmlFor="genres">Genres:</label>
-            <select id="genres" name="genres" onChange={changeHandler} multiple>
+            <label htmlFor="genre">Genres:</label>
+            <select id="genre" name="genre" onChange={changeHandler} multiple>
                 <option value="fantasy">Fantasy</option>
                 <option value="adventure">Adventure</option>
                 <option value="sci-fi">Sci-Fi</option>
                 <option value="romance">Romance</option>
             </select>
 
-            <label htmlFor="imageUrl">ImageURL:</label>
+            <label htmlFor="imgUrl">ImageURL:</label>
             <input 
-            placeholder="imageUrl" 
+            placeholder="imgUrl" 
             type="text" 
-            id="imageUrl" 
-            name="imageUrl"
-            value={values.ImageUrl}
+            id="imgUrl" 
+            name="imgUrl"
+            value={values.imgUrl}
             onChange={changeHandler}
             />
 

@@ -1407,7 +1407,34 @@
                     "imgUrl": "https://upload.wikimedia.org/wikipedia/en/thumb/6/6c/Solo_Leveling_Volume_1_Cover.jpg/220px-Solo_Leveling_Volume_1_Cover.jpg",
                     "_createdOn": 1722685639107,
                     "_id": "bc7f7fd9-2530-4ad3-941c-a641c578428f"
+                },
+                "580ec2c5-8e43-4d90-97a2-4eba0a8b8b7d": {
+                    "_ownerId": "5ab243f1-3c93-4ce0-b8b2-ece6b5df4b6a",
+                    "title": "Goblin Slayer",
+                    "author": "Dobrev",
+                    "description": "In a world of fantasy, adventurers come from far and wide to join the Guild. They complete contracts to earn gold and glory. An inexperienced priestess joins her first adventuring party, but comes into danger after her first contact involving goblins goes wrong.",
+                    "genre": "fantasy",
+                    "imgUrl": "https://upload.wikimedia.org/wikipedia/en/thumb/a/ac/Goblin_Slayer%21%2C_volume_1.jpg/220px-Goblin_Slayer%21%2C_volume_1.jpg",
+                    "volume": "5",
+                    "state": "poor",
+                    "price": "50",
+                    "_createdOn": 1722689941261,
+                    "_id": "580ec2c5-8e43-4d90-97a2-4eba0a8b8b7d"
+                },
+                "ee2e4705-8bf3-4e46-ba13-5693dd630d89": {
+                    "_ownerId": "f942e30f-46cb-43a6-981f-49bf00e84531",
+                    "title": "Spicy Kitty",
+                    "author": "Mela",
+                    "description": "Just a cute spicy kitty",
+                    "genre": "romance",
+                    "imgUrl": "/images/kitty.png",
+                    "volume": "4",
+                    "price": "1000",
+                    "state": "Good",
+                    "_createdOn": 1722691219700,
+                    "_id": "ee2e4705-8bf3-4e46-ba13-5693dd630d89"
                 }
+             
          
         },
         catalogList:{
