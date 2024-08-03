@@ -5,6 +5,7 @@ export const AuthContext = createContext({
     email: '',
     username: '',
     accessToken: '',
+    accountStatus: '',
     isAuthenticated: false,
     changeAuthState: (authState = {}) => null,
 });
@@ -23,6 +24,7 @@ export default function AuthContextProvider(props){
         email: authState.email,
         username: authState.username,
         accessToken: authState.accessToken,
+        accountStatus: authState.accountStatus,
         isAuthenticated: !!authState.email,
         changeAuthState
       }

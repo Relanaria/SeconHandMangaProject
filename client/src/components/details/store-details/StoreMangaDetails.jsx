@@ -28,8 +28,8 @@ export default function StoreMangaDetails(props){
                  <p className="manga-price">Genre: {manga.genre}</p>
                  <p className="manga-description">Description: {manga.description}</p>
                  <p className="manga-price">Volume: {manga.volume}</p>
-                 <p className="manga-price">Price: ${manga.price}</p>
                  <p className="manga-price">State: {manga.state}</p>
+                 <p className="manga-price">Price: ${manga.price}</p>
 
                         {authUserContext.isAuthenticated ? <div className="actions">
                          <button className="btn buy-btn" onClick={() => buyManga(manga._id)}>Buy</button>

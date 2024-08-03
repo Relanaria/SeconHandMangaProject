@@ -1,17 +1,15 @@
 import * as request from "./requester";
 
 const BASE_URL = 'http://localhost:3030/data/';
+const directory = 'comments'
 
-const createComment = (username, text) => {
+const createComment = (commentData, accessToken) => request.post(`${BASE_URL}/${directory}`, commentData, accessToken);
 
-    request.post(`${BASE_URL}/comments/`)
-}
-
-
-
+const getComments = (encodedMangaId) => request.get(`${BASE_URL}/comments?where=mangaId%3D${encodedMangaId}`)
 
 const commentsAPI = {
     createComment,
+    getComments
 }
 
 export default commentsAPI

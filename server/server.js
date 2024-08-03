@@ -1332,6 +1332,7 @@
     		"60f0cf0b-34b0-4abd-9769-8c42f830dffc": {
     			email: "admin@abv.bg",
     			username: "Admin",
+                accountStatus: "Admin",
     			hashedPassword: "fac7060c3e17e6f151f247eacb2cd5ae80b8c36aedb8764e18a41bbdc16aa302"
     		}
     	},
@@ -1484,6 +1485,16 @@
                     "imgUrl": "https://m.media-amazon.com/images/M/MV5BZmQ5NGFiNWEtMmMyMC00MDdiLTg4YjktOGY5Yzc2MDUxMTE1XkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_QL75_UY281_CR1,0,190,281_.jpg",
                     "_createdOn": 1722351488932,
                     "_id": "8d3248f8-0708-48f7-a681-3bf6f87bbd7b"
+                },
+                "-9994-46e6-aecb-cc35395294492a1cb305": {
+                    "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
+                    "title": "Sing \"Yesterday\" for Me",
+                    "author": "Kei Toume",
+                    "description": "Rikuo Uozumi has all but resigned himself to a bleak future, aimlessly working at a convenience store in Tokyo after graduating from college. His monotonous life is interrupted when the peculiar Haru Nonaka makes a lively appearance, frequently dropping by his workplace to befriend him. When Rikuo learns that an old college friend and crush, Shinako Morinome, has moved back into town, he reaches out to further their relationship. Unbeknownst to Rikuo however, Shinako is carrying painful memories from her past that were holding her back from accepting his feelings. Meanwhile, as Haru continually opens up to Rikuo, he discovers that she, much like him, is living by herself and wants to step out of her comfort zone into an uncertain future.",
+                    "genre": "romance",
+                    "imgUrl": "https://m.media-amazon.com/images/M/MV5BNDg2YmUxN2UtNTUzYy00MDJmLWFmNTYtOWMzMWZjYzY1NzQ5XkEyXkFqcGdeQXVyMzgxODM4NjM@._V1_FMjpg_UX1000_.jpg",
+                    "_createdOn": 1722702231564,
+                    "_id": "-9994-46e6-aecb-cc35395294492a1cb305"
                 }
         },
     	comments: {
@@ -1493,7 +1504,15 @@
     			recipeId: "8f414b4f-ab39-4d36-bedb-2ad69da9c830",
     			_createdOn: 1614260681375,
     			_id: "0a272c58-b7ea-4e09-a000-7ec988248f66"
-    		}
+    		},
+            "dd219abd-19c6-4f06-b25a-a6146767f308": {
+                "_ownerId": "48dad3e1-5703-43f0-9327-270b3016cde9",
+                "username": "Dobromir1336",
+                "mangaId": "35395294-9994-46e6-aecb-cc492a1cb305",
+                "comment": "fgdgfds",
+                "_createdOn": 1722704414865,
+                "_id": "dd219abd-19c6-4f06-b25a-a6146767f308"
+            }
     	},
     	likes: {
     	},
