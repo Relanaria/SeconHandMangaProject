@@ -1,23 +1,30 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import { useForm } from '../../hooks/useForm';
+import { useRegister } from '../../hooks/useAuth';
+
 import './register.css'; 
 
 function Register() {
-
-
+    const navigate = useNavigate();
     const initialValues = {
         email: '',
-        username: '',
         password: '',
+        username: '',
         confirmPassword: ''
     };
 
-    const formSubmitHanlder = (values) =>{
-        console.log('Form Submited!');
-        console.log(values);
-    };
+    const register = useRegister();
 
-    const {values, changeHandler, submitHandler} = useForm(initialValues, formSubmitHanlder);
+    const {values, changeHandler, submitHandler} = useForm(initialValues,async (userData) => {
+        try {
+           await register(userData);
+            navigate('/');
+        } catch (error) {
+           alert(error.message)
+        }
+    });
 
     return (
         <div className="register-container">

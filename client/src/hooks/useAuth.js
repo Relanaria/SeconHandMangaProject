@@ -23,9 +23,15 @@ export const useLogin = () => {
 export const useRegister = () =>{
   const authState = useAuthContext();
 
-  const registerHandler = async(userData) =>{
+  const registerHandler = async({ confirmPassword: _, ...userData}) =>{
+   
+    //TODO remove password from authState
     const result = await register(userData);
+    if(result.code == 409){
+      throw new Error(result.message);
+    };
 
+    authState.changeAuthState(result);
   }
 
   return registerHandler;
