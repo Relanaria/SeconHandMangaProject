@@ -11,7 +11,8 @@ import Spinner from '../../spinner/Spinner';
 import './StoreMangaDetails.css';
 
 export default function StoreMangaDetails(props){
-    const { mangaId } = useParams()
+    const [errors, setErrors] = useState({});
+    const { mangaId } = useParams();
     const [isPending, setIsPending] = useState(true);
     const [manga, setManga] = useGetOneMangaStore(mangaId, setIsPending);
     const navigate = useNavigate();
@@ -21,8 +22,16 @@ export default function StoreMangaDetails(props){
     const authUserContext = useAuthContext();
     
     async function buyHandleClick(){
-        await deleteManga(mangaId, authUserContext.accessToken);
-       navigate('/store');
+        let deleteError = {};
+        try {
+            
+            await deleteManga(mangaId, authUserContext.accessToken);
+            navigate('/store');
+        } catch (error) {
+            deleteError.isNotAuthorized = error.message;
+            setErrors(deleteError)
+            return;
+        }
     }
     return (
         <>
@@ -45,7 +54,7 @@ export default function StoreMangaDetails(props){
                          {/* <button className="btn buy-btn" onClick={buyHandleClick}>Buy</button> */}
                          {authUserContext.userId == manga._ownerId ? 
                             <> 
-                                <Link 
+                                <Link
                                 to={`/store/edit/${manga._id}`}
                                 state={ {mangaDetails: manga} }
                                 className="btn edit-btn">Edit</Link>
@@ -53,6 +62,7 @@ export default function StoreMangaDetails(props){
                             </>
                             : " " }
                      </div>: ''}
+                    {errors.isNotAuthorized && <p className="error">{errors.isNotAuthorized}</p>}
              </div>
          </div>
      </div>

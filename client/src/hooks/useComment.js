@@ -20,7 +20,7 @@ export const useCreateComment = () =>{
         }
         console.log(result);
         
-        if(result.code == 403){
+        if(result.code === 403){
             throw new Error("Invalid accessToken");
         }
         return result;

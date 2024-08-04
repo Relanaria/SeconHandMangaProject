@@ -47,10 +47,11 @@ export default function CatalogMangaDetails(){
             }
 
             const result = await createComment(commentData, mangaId, authUserContext.username, authUserContext.accessToken);
+            
             setComments(oldComments => [...oldComments, result]);
             
         } catch (error) {
-            comentInput.invalidInput = error.message;
+            comentInput.comment = error.message;
             setErrors(comentInput);
             return;
         }

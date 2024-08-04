@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import './contactUs.css';
 
 import { useNavigate } from 'react-router-dom';
+import valitadeInputs from '../../util/validateFormInputs';
 
 function ContactUs() {
+    const [errors, setErrors] = useState({});
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -19,12 +21,14 @@ function ContactUs() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log('Form data submitted:', formData);
-        setFormData({
-            name: '',
-            email: '',
-            message: ''
-        });
+        let contactUsInput = valitadeInputs.validateContactUs(formData);
+
+        if (Object.keys(contactUsInput).length > 0) {
+            setErrors(contactUsInput);
+            return;
+        }
+
+        console.log('Email recieved:', formData);
         navigate('/')
     };
 
@@ -41,8 +45,8 @@ function ContactUs() {
                         value={formData.name}
                         onChange={handleChange}
                         placeholder='name'
-                        required
                     />
+                    {errors.name && <p className="error">{errors.name}</p>}
                 </div>
                 <div className="form-group">
                     <label htmlFor="email">Email</label>
@@ -53,8 +57,9 @@ function ContactUs() {
                         placeholder='email'
                         value={formData.email}
                         onChange={handleChange}
-                        required
+                  
                     />
+                    {errors.email && <p className="error">{errors.email}</p>}
                 </div>
                 <div className="form-group">
                     <label htmlFor="message">Message</label>
@@ -64,8 +69,9 @@ function ContactUs() {
                         placeholder='message'
                         value={formData.message}
                         onChange={handleChange}
-                        required
+                
                     ></textarea>
+                    {errors.message && <p className="error">{errors.message}</p>}
                 </div>
                 <button type="submit">Submit</button>
             </form>

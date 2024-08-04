@@ -106,11 +106,33 @@ function validateComment(commentInput){
   return errors;
 }
 
+function validateContactUs(contactData){
+  let errors = {};
+  const emailRegex = /^[a-zA-Z0-9]+@[a-zA-Z]+\.[a-zA-Z]+$/;
+
+  if (!contactData.email) {
+    errors.email = "Email field is required";
+  } else if (!emailRegex.test(contactData.email)) {
+    errors.email ="Email must contain letters and/or numbers only.\n Followed by a @/letters.letters.\n Example: test123@domain.org";
+  }
+
+  if(!contactData.name){
+    errors.name = "Name is required!"
+  };
+
+  if(!contactData.message){
+    errors.message = "Message is required!"
+  }
+
+  return errors;
+}
+
 const valitadeInputs = {
   validateRegisterInput,
   validateLoginInput,
   validateCreateEditInputs,
-  validateComment
+  validateComment,
+  validateContactUs
 };
 
 export default valitadeInputs;

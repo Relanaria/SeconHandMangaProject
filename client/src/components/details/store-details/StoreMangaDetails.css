@@ -9,6 +9,13 @@
     text-align: center;
 }
 
+
+.error {
+    color: red;
+    font-size: 1.2em;
+    margin-top: 0.25em;
+}
+
 .manga-details {
     display: flex;
     justify-content: space-around;
