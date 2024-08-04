@@ -5,15 +5,15 @@ import { useAuthContext } from '../../contexts/AuthContext';
 import { useGetFavourites } from '../../hooks/useFavourite';
 import { useDeleteFavourite } from '../../hooks/useFavourite';
 
+import Spinner from '../spinner/Spinner';
 import './profilePage.css';
 
 const ProfilePage = () => {
     const authUserContext = useAuthContext();
-
-    const [favorites, setFavorites] = useGetFavourites(authUserContext.userId);
+    const [isFetching, setIsFetching] = useState(true);
+    const [favorites, setFavorites] = useGetFavourites(authUserContext.userId, setIsFetching);
     
     const deleteHandleClick = useDeleteFavourite(setFavorites);
-    console.log(favorites);
     
 
     return (
@@ -36,7 +36,9 @@ const ProfilePage = () => {
                                 <button className="remove-btn" onClick={() => deleteHandleClick(fav._id, authUserContext.accessToken)}>Remove</button>
                             </div>
                         </div>
-                    )) : 'No favourites added yet!'}
+                    )) : 
+                    (isFetching && favorites.length <= 0) ? <Spinner/> : 'No manga added to favourites!'
+                    }
                 </div>
             </div>
         </div>

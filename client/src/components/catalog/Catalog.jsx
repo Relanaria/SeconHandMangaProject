@@ -20,8 +20,6 @@ function Catalog() {
     }, [filterGenre, mangaBooks]);
     
     const handleGenreFilterClick = (e) =>{
-        console.log(e.target.innerText);
-        
         setFilterGenre(e.target.innerText)
     }
 

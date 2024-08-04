@@ -16,16 +16,17 @@ import Comment from './comments/comment';
 import './CatalogMangaDetails.css';
 
 export default function CatalogMangaDetails(){
-    const { mangaId } = useParams();
     const [isPending, setIsPending] = useState(true);
+    const { mangaId } = useParams();
+    const [isExisting, setIsExisting] = useState(false);
     const navigate = useNavigate();
 
     const [manga, setManga] = useGetOneMangaCatalog(mangaId, setIsPending);
     const [comments, setComments] = useGetComments(mangaId);
     
     const authUserContext = useAuthContext();
-    const isExisting = useCheckFavourite(authUserContext.userId, mangaId);
-
+    useCheckFavourite(authUserContext.userId, mangaId, setIsExisting);
+    
     const createComment = useCreateComment();
     const createFavourite = useCreateFavourite();
 
@@ -63,12 +64,10 @@ export default function CatalogMangaDetails(){
                             <h3 className="manga-author">Author: {manga.author}</h3>
                             <p className="manga-author">Genre: {manga.genre}</p>
                             <p className="manga-description">Description: {manga.description}</p>
-                            {authUserContext.isAuthenticated && !isExisting ?
-                            <>
-                            <button className="favorite-btn" onClick={addToFavouritesHandleClick}>⭐</button>
-                            </>
-                            : 
+                            {isExisting ?
                             ''
+                            : 
+                            <button className="favorite-btn" onClick={addToFavouritesHandleClick}>⭐</button>
                             }
                             {authUserContext.accountStatus != undefined ? 
                                 <div className="owner-actions">

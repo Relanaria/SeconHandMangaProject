@@ -18,11 +18,11 @@ export function useCreateFavourite() {
     }
     return result;
   };
-
+ 
   return createFavourite;
 }
 
-export function useGetFavourites(ownerId) {
+export function useGetFavourites(ownerId, setIsFetching) {
   const [favourites, setFavourites] = useState([]);
 
   useEffect(() => {
@@ -30,7 +30,7 @@ export function useGetFavourites(ownerId) {
       const encodedOwnerId = encodeURIComponent(`"${ownerId}"`);
 
       const result = await favouriteAPI.getAllFavourites(encodedOwnerId);
-
+      setIsFetching(false);
       setFavourites(result);
     })();
   }, []);
@@ -44,7 +44,6 @@ export function useDeleteFavourite(setFavorites) {
     
     const result = await favouriteAPI.deleteFavourite(favouriteId, accessToken);
     setFavorites((prevFavourites) => prevFavourites.filter((fav) => fav._id !== favouriteId));
-    
   };
 
   return deleteFavourite;
