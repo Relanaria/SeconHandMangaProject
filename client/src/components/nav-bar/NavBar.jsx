@@ -17,7 +17,12 @@ export default function NavBar() {
                 <li><Link to="/">Home</Link></li>
                 <li><Link to="/catalog">Catalog</Link></li>
                 <li><Link to="/store">Store</Link></li>
-                {authUserContext.isAuthenticated && <li><Link to="/createItem">List Product</Link></li>}
+                {authUserContext.isAuthenticated && 
+                <>
+                <li><Link to="/createItem">List Product</Link></li>
+                <li><Link to="/profile">Profile</Link></li>
+                </>
+                }
                 <li><Link to="/about">About Us</Link></li>
                 <li><Link to="/contact-us">Contact Us</Link></li>
             </ul>

@@ -11,6 +11,7 @@ import HomePage from "./components/home-page/HomePage";
 import NotFound from './components/not-found/NotFound';
 import Register from './components/register/Register';
 import Catalog from "./components/catalog/Catalog";
+import ProfilePage from "./components/profile/Profile";
 import AboutUs from "./components/about/AboutUs";
 import NavBar from "./components/nav-bar/NavBar";
 import Footer from "./components/footer/Footer";
@@ -38,6 +39,7 @@ function App() {
 
         <Route path="/about" element={<AboutUs />} />
         <Route path="/contact-us" element={<ContactUs />} /> 
+        <Route path="/profile" element={<ProfilePage/>}/>
         <Route path="/login" element={<Login />} /> 
         <Route path="/register" element={<Register />} /> 
 

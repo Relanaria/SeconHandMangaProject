@@ -33,8 +33,7 @@ export const useGetComments = (mangaId) =>{
             
             const result = await commentsAPI.getComments(encodeMangaId);
             
-            setComments(result)
-    
+            setComments(result);
         })();
     },[])
     
