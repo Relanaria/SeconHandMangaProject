@@ -9,6 +9,12 @@
     margin-top: 20px;
     margin-bottom: 20px;
 }
+.error {
+    color: red;
+    font-size: 1.2em;
+    margin-top: 0.25em;
+}
+
 
 .register-container h1 {
     font-size: 2.5em;

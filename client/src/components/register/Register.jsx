@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { useForm } from '../../hooks/useForm';
 import { useRegister } from '../../hooks/useAuth';
+import validateRegisterInput from '../../util/validateRegisterInput';
 
 import './register.css'; 
 
@@ -17,14 +18,24 @@ function Register() {
 
     const register = useRegister();
 
+    const [errors, setErrors] = useState({});
     const {values, changeHandler, submitHandler} = useForm(initialValues,async (userData) => {
         try {
+            let formErrors = validateRegisterInput(userData);
+            console.log(formErrors);
+            
+            if (Object.keys(formErrors).length > 0) {
+                setErrors(formErrors);
+                return;
+            }
+
            await register(userData);
             navigate('/');
         } catch (error) {
            alert(error.message)
         }
     });
+
 
     return (
         <div className="register-container">
@@ -39,8 +50,8 @@ function Register() {
                         name="email"
                         onChange={changeHandler}
                         vlaue={values.email}
-                        required
                     />
+                    {errors.email && <p className="error">{errors.email}</p>}
                 </div>
                 <div className="form-group">
                     <label htmlFor="username">Username</label>
@@ -53,6 +64,7 @@ function Register() {
                         vlaue={values.username}
                         required
                     />
+                    {errors.username && <p className="error">{errors.username}</p>}
                 </div>
                 <div className="form-group">
                     <label htmlFor="password">Password</label>
@@ -63,8 +75,8 @@ function Register() {
                         name="password"
                         onChange={changeHandler}
                         vlaue={values.password}
-                        required
                     />
+                    {errors.password && <p className="error">{errors.password}</p>}
                 </div>
                 <div className="form-group">
                     <label htmlFor="confirmPassword">Confirm Password</label>
@@ -75,8 +87,8 @@ function Register() {
                         name="confirmPassword"
                         onChange={changeHandler}
                         vlaue={values.confirmPassword}
-                        required
                     />
+                    {errors.confirmPassword && <p className="error">{errors.confirmPassword}</p>}
                 </div>
                 <button type="submit">Register</button>
             </form>
