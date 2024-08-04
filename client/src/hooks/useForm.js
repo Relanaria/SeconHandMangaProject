@@ -15,6 +15,7 @@ export function useForm(initialValues, submitCallback) {
         e.preventDefault();
         // On submit validation maybe?
         submitCallback(values);
+        setValues(initialValues)
     };
 
     return {

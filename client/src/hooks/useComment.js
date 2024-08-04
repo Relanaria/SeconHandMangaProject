@@ -40,7 +40,7 @@ export const useGetComments = (mangaId) =>{
             
             setComments(result);
         })();
-    },[])
+    },[mangaId])
     
     return [comments, setComments];
 }
