@@ -11,7 +11,7 @@ export default async function requester(method, url, data, accessToken) {
   if (accessToken) {
     options.headers["X-Authorization"] = accessToken;
   }
-
+  
   if (data != undefined) {
     options.headers["Content-Type"] = "application/json";
     options.body = JSON.stringify(data);

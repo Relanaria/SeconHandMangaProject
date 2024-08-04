@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
 import { useGetOneMangaCatalog } from '../../../hooks/useMangaCatalog';
+import { useCreateFavourite } from '../../../hooks/useFavourite';
 import { useAuthContext } from '../../../contexts/AuthContext';
 import { useCreateComment } from '../../../hooks/useComment';
 import { useGetComments } from '../../../hooks/useComment';
@@ -12,7 +13,7 @@ import Comment from './comments/comment';
 
 import './CatalogMangaDetails.css';
 
-export default function CatalogMangaDetails(props){
+export default function CatalogMangaDetails(){
     const { mangaId } = useParams();
     const [isPending, setIsPending] = useState(true);
 
@@ -23,6 +24,7 @@ export default function CatalogMangaDetails(props){
     const authUserContext = useAuthContext();
 
     const createComment = useCreateComment();
+    const createFavourite = useCreateFavourite();
 
     const initialValues = {
         comment: '',
@@ -38,6 +40,9 @@ export default function CatalogMangaDetails(props){
         }
     });
 
+   async function handeClick () {
+       const result = await createFavourite(manga, authUserContext.accessToken);
+    }
 
 
     return ( (
@@ -51,9 +56,10 @@ export default function CatalogMangaDetails(props){
                         <div className="manga-info">
                             <h2 className="manga-title">Title: {manga.title}</h2>
                             <h3 className="manga-author">Author: {manga.author}</h3>
+                            <p className="manga-author">Genre: {manga.genre}</p>
                             <p className="manga-description">Description: {manga.description}</p>
                             {authUserContext.isAuthenticated ?<>
-                            <button className="favorite-btn" onClick={() => addToFavorites(manga._id)}>⭐</button>
+                            <button className="favorite-btn" onClick={handeClick}>⭐</button>
                                 {authUserContext.accountStatus != undefined ? 
                                     <div className="owner-actions">
                                         <Link to={`/edit/${manga._id}`} className="edit-btn">Edit</Link>

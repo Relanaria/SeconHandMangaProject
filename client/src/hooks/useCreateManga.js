@@ -6,7 +6,6 @@ const directory = 'productList';
 
 export const useCreateManga = () =>{
 
-
     const createManga = async (mangaData, userToken) =>{
         const result = await mangaAPI.createManga(directory, mangaData, userToken);
 

@@ -1514,7 +1514,7 @@
                 "_id": "dd219abd-19c6-4f06-b25a-a6146767f308"
             }
     	},
-    	likes: {
+    	favourites: {
     	},
     };
     var rules$1 = {
