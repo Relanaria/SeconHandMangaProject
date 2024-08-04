@@ -69,7 +69,7 @@ function validateCreateEditInputs(values) {
     errors.description = "Description is required";
   }
 
-  if (!values.genre || values.genre.length === 0) {
+  if(!values.genre || values.genre == 'Select genre') {
     errors.genre = "Genre is required";
   }
 
@@ -96,10 +96,21 @@ function validateCreateEditInputs(values) {
   return errors;
 }
 
+function validateComment(commentInput){
+  let errors = {};
+
+  if(!commentInput.comment){
+    errors.comment = "Comment can't be a empty sting!"; 
+  };
+
+  return errors;
+}
+
 const valitadeInputs = {
   validateRegisterInput,
   validateLoginInput,
   validateCreateEditInputs,
+  validateComment
 };
 
 export default valitadeInputs;

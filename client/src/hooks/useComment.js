@@ -18,6 +18,11 @@ export const useCreateComment = () =>{
         if(result.code == 401){
             throw new Error("Unauthorized");
         }
+        console.log(result);
+        
+        if(result.code == 403){
+            throw new Error("Invalid accessToken");
+        }
         return result;
     };
 

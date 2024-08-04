@@ -36,14 +36,21 @@ select {
     font-size: 1em;
 }
 
-
-.edit-input,
-.edit-textarea {
+.edit-input {
     width: 100%;
     padding: 8px;
     border-radius: 5px;
     border: none;
     font-size: 1em;
+}
+
+.edit-textarea{
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+    border: none;
+    font-size: 1em;
+    height: 5em;
 }
 
 .edit-input[type="number"] {

@@ -51,7 +51,7 @@ export function useEditManga(){
     const editManga = async (mangaId, data, accessToken) =>{
        const result = await mangaAPI.editManga(directory, mangaId, data, accessToken);
 
-       if(result.code == 403){
+       if(result.code == 401){
         throw new Error("Unauthorized");
        };
     }

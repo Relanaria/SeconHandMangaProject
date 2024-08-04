@@ -9,6 +9,7 @@ import { useCreateComment } from '../../../hooks/useComment';
 import { useGetComments } from '../../../hooks/useComment';
 import { useForm } from '../../../hooks/useForm';
 import {useCheckFavourite} from '../../../util/checkIfFavouriteExist';
+import valitadeInputs from '../../../util/validateFormInputs';
 
 import Spinner from '../../spinner/Spinner';
 import Comment from './comments/comment';
@@ -16,6 +17,7 @@ import Comment from './comments/comment';
 import './CatalogMangaDetails.css';
 
 export default function CatalogMangaDetails(){
+    const [errors, setErrors] = useState({});
     const [isPending, setIsPending] = useState(true);
     const { mangaId } = useParams();
     const [isExisting, setIsExisting] = useState(false);
@@ -35,13 +37,22 @@ export default function CatalogMangaDetails(){
     };
 
     const {values, changeHandler, submitHandler} = useForm(initialValues, async (commentData) => {
-        
+        let comentInput = valitadeInputs.validateComment(commentData);
+
         try {
+            
+            if (Object.keys(comentInput).length > 0) {
+                setErrors(comentInput);
+                return;
+            }
+
             const result = await createComment(commentData, mangaId, authUserContext.username, authUserContext.accessToken);
             setComments(oldComments => [...oldComments, result]);
             
         } catch (error) {
-            alert(error.message);
+            comentInput.invalidInput = error.message;
+            setErrors(comentInput);
+            return;
         }
     });
 
@@ -99,6 +110,7 @@ export default function CatalogMangaDetails(){
                                 value={values.comment}
                                 onChange={changeHandler}
                             ></textarea>
+                             {errors.comment && <p className="error">{errors.comment}</p>}
                             <button type="submit" className="add-comment-btn">Add Comment</button>
                         </form> 
                         : 
