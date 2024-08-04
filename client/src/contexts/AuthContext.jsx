@@ -12,16 +12,26 @@ export const AuthContext = createContext({
 });
 
 export default function AuthContextProvider(props) {
-  const [authState, setAuthState] = useState({});
+  const [authState, setAuthState] = useState(() =>{
+    const persistedAuth = localStorage.getItem('authState');
+
+    if(!persistedAuth){
+      return {};
+    };
+
+    const authData = JSON.parse(persistedAuth);
+
+    return authData;
+  });
 
 
   const changeAuthState = (state) => {
-    localStorage.setItem("accessToken", state.accessToken);
+    localStorage.setItem("authState", JSON.stringify(state));
     setAuthState(state);
   };
 
   const logout = () => {
-    localStorage.removeItem("accessToken");
+    localStorage.removeItem("authState");
     setAuthState({});
   };
 
