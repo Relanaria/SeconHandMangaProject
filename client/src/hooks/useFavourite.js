@@ -38,13 +38,12 @@ export function useGetFavourites(ownerId) {
   return [favourites, setFavourites];
 }
 
-export function useDeleteFavourite(favouriteId, accessToken) {
+export function useDeleteFavourite(setFavorites) {
 
   const deleteFavourite = async (favouriteId, accessToken) => {
-    console.log(favouriteId, accessToken);
     
     const result = await favouriteAPI.deleteFavourite(favouriteId, accessToken);
-    console.log(result);
+    setFavorites((prevFavourites) => prevFavourites.filter((fav) => fav._id !== favouriteId));
     
   };
 

@@ -9,8 +9,10 @@ import './profilePage.css';
 
 const ProfilePage = () => {
     const authUserContext = useAuthContext();
+
     const [favorites, setFavorites] = useGetFavourites(authUserContext.userId);
-    const deleteHandleClick = useDeleteFavourite();
+
+    const deleteHandleClick = useDeleteFavourite(setFavorites);
 
 
     return (
@@ -23,7 +25,7 @@ const ProfilePage = () => {
             <div className="favorites-section">
                 <h2>Favorites</h2>
                 <div className="favorites-list">
-                    {favorites.map(fav => (
+                    {favorites.length > 0 ?  favorites.map(fav => (
                         <div key={fav.manga._id} className="favorite-item">
                             <img src={fav.manga.imgUrl} alt={fav.manga.title} className="favorite-img" />
                             <h3 className="favorite-title">{fav.manga.title}</h3>
@@ -33,7 +35,7 @@ const ProfilePage = () => {
                                 <button className="remove-btn" onClick={() => deleteHandleClick(fav._id, authUserContext.accessToken)}>Remove</button>
                             </div>
                         </div>
-                    ))}
+                    )) : 'No favourites added yet!'}
                 </div>
             </div>
         </div>
