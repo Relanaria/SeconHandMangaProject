@@ -87,6 +87,14 @@ export default function EditMangaPage  ()  {
                         required
                         className="edit-input"
                     />
+                    
+            <label htmlFor="genre">Genres:</label>
+            <select id="genre" name="genre" onChange={changeHandler} multiple>
+                <option value="fantasy">Fantasy</option>
+                <option value="adventure">Adventure</option>
+                <option value="sci-fi">Sci-Fi</option>
+                <option value="romance">Romance</option>
+            </select>
                 </div>
                 <div className="edit-form-group">
                     <label htmlFor="volume" className="edit-label">Volume:</label>

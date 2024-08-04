@@ -5,11 +5,13 @@ import { useNavigate } from "react-router-dom";
 
 import { useCreateManga } from "../../hooks/useCreateManga";
 import { useAuthContext } from "../../contexts/AuthContext";
+import valitadeInputs from '../../util/validateFormInputs';
 
 import "./createItem.css"
 
 export default function CreateItem() {
     const navigate = useNavigate();
+    const [errors, setErrors] = useState({});
     const initialValues = {
         title: "",
         author: "",
@@ -24,13 +26,21 @@ export default function CreateItem() {
     const create = useCreateManga();
 
     const {values, changeHandler, submitHandler} = useForm(initialValues, async (mangaData) => {
-
+        let formErrors = valitadeInputs.validateCreateEditInputs(mangaData);
         try {
-           const createdManga = await create(mangaData, AuthUserData.accessToken);
             
-           navigate(`/store/${createdManga._id}/details`)
+            if (Object.keys(formErrors).length > 0) {
+                setErrors(formErrors);
+                return;
+            } 
+            
+            const createdManga = await create(mangaData, AuthUserData.accessToken);
+
+            navigate(`/store/${createdManga._id}/details`)
         } catch (error) {
-            alert(error.message)
+            formErrors.notAuthorized = error.message;
+            setErrors(formErrors);
+            return;
         }
     })
 
@@ -47,6 +57,7 @@ export default function CreateItem() {
             value={values.title}
             onChange={changeHandler}
             />
+            {errors.title && <p className="error">{errors.title}</p>}
 
             <label htmlFor="author">Author:</label>
             <input 
@@ -57,6 +68,7 @@ export default function CreateItem() {
             value={values.author}
             onChange={changeHandler}
             />
+            {errors.author && <p className="error">{errors.author}</p>}
 
             <label htmlFor="description">Description:</label>
             <textarea 
@@ -66,6 +78,7 @@ export default function CreateItem() {
             value={values.description}
             onChange={changeHandler}
             ></textarea>
+            {errors.description && <p className="error">{errors.description}</p>}
 
             <label htmlFor="genre">Genres:</label>
             <select id="genre" name="genre" onChange={changeHandler} multiple>
@@ -74,6 +87,7 @@ export default function CreateItem() {
                 <option value="sci-fi">Sci-Fi</option>
                 <option value="romance">Romance</option>
             </select>
+            {errors.genre && <p className="error">{errors.genre}</p>}
 
             <label htmlFor="imgUrl">ImageURL:</label>
             <input 
@@ -84,6 +98,7 @@ export default function CreateItem() {
             value={values.imgUrl}
             onChange={changeHandler}
             />
+            {errors.imgUrl && <p className="error">{errors.imgUrl}</p>}
 
             <label htmlFor="volume">Volume:</label>
             <input 
@@ -94,6 +109,7 @@ export default function CreateItem() {
             value={values.volume}
             onChange={changeHandler}
             />
+            {errors.volume && <p className="error">{errors.volume}</p>}
 
             <label htmlFor="state">State:</label>
             <input 
@@ -104,6 +120,7 @@ export default function CreateItem() {
             value={values.state}
             onChange={changeHandler}
             />
+            {errors.state && <p className="error">{errors.state}</p>}
 
             <label htmlFor="price">Price:</label>
             <input 
@@ -114,7 +131,8 @@ export default function CreateItem() {
             value={values.price}
             onChange={changeHandler}
             />
-
+            {errors.price && <p className="error">{errors.price}</p>}
+            {errors.notAuthorized && <p className="error">{errors.notAuthorized}</p>}
             <button type="submit">Submit</button>
         </form>
     </div>

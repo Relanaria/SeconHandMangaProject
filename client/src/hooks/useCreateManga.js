@@ -9,7 +9,7 @@ export const useCreateManga = () =>{
     const createManga = async (mangaData, userToken) =>{
         const result = await mangaAPI.createManga(directory, mangaData, userToken);
 
-        if(result.code == 401){
+        if(result.code == 403){
             throw new Error('Create action not authorized!');
         }
         return result;

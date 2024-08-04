@@ -3,11 +3,12 @@ import { useNavigate } from 'react-router-dom';
 
 import { useForm } from '../../hooks/useForm';
 import { useRegister } from '../../hooks/useAuth';
-import validateRegisterInput from '../../util/validateRegisterInput';
+import valitadeInputs from '../../util/validateFormInputs';
 
 import './register.css'; 
 
 function Register() {
+    const [errors, setErrors] = useState({});
     const navigate = useNavigate();
     const initialValues = {
         email: '',
@@ -18,11 +19,9 @@ function Register() {
 
     const register = useRegister();
 
-    const [errors, setErrors] = useState({});
     const {values, changeHandler, submitHandler} = useForm(initialValues,async (userData) => {
+        let formErrors = valitadeInputs.validateRegisterInput(userData);
         try {
-            let formErrors = validateRegisterInput(userData);
-            console.log(formErrors);
             
             if (Object.keys(formErrors).length > 0) {
                 setErrors(formErrors);
@@ -32,7 +31,9 @@ function Register() {
            await register(userData);
             navigate('/');
         } catch (error) {
-           alert(error.message)
+            formErrors.email = 'Email already exists!';
+            setErrors(formErrors);
+            return;
         }
     });
 
@@ -50,6 +51,7 @@ function Register() {
                         name="email"
                         onChange={changeHandler}
                         vlaue={values.email}
+                        required
                     />
                     {errors.email && <p className="error">{errors.email}</p>}
                 </div>
@@ -75,6 +77,7 @@ function Register() {
                         name="password"
                         onChange={changeHandler}
                         vlaue={values.password}
+                        required
                     />
                     {errors.password && <p className="error">{errors.password}</p>}
                 </div>
@@ -87,6 +90,7 @@ function Register() {
                         name="confirmPassword"
                         onChange={changeHandler}
                         vlaue={values.confirmPassword}
+                        required
                     />
                     {errors.confirmPassword && <p className="error">{errors.confirmPassword}</p>}
                 </div>
