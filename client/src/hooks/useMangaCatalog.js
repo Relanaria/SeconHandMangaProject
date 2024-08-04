@@ -4,17 +4,18 @@ import mangaAPI from "../api/manga-api";
 const directory = 'catalogList';
 const directoryForHomePage = 'catalogList?sortBy=_createdOn%20desc&pageSize=3';
 
-export function useGetAllMangaCatalog(){
+export function useGetAllMangaCatalog(setIsFetching){
     const [mangaBooks, setMangaBooks] = useState([]);
 
     useEffect(()=>{
        (async()=>{
             const result = await mangaAPI.getAllManga(directory);
+            setIsFetching(false);
             setMangaBooks(result);
         })();
     }, []);
 
-    return [mangaBooks, setMangaBooks];
+    return mangaBooks;
 };
 
 export function useGetAllMangaCatalogLatest() {

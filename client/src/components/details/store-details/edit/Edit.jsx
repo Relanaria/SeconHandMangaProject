@@ -31,10 +31,10 @@ export default function EditMangaPage  ()  {
         
             try {
                 await editManga(mangaId, mangaData, authUserContext.accessToken)
+                navigate(`/store/${mangaId}/details`);
             } catch (error) {
                 alert(error.message);
             }
-            navigate(`/store/${mangaId}/details`);
     })
 
     return (

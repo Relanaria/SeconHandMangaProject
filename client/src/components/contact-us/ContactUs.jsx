@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
 import './contactUs.css';
 
+import { useNavigate } from 'react-router-dom';
+
 function ContactUs() {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
         message: ''
     });
+
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -21,6 +25,7 @@ function ContactUs() {
             email: '',
             message: ''
         });
+        navigate('/')
     };
 
     return (
