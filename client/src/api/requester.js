@@ -2,7 +2,7 @@ export default async function requester(method, url, data, accessToken) {
   const options = {
     method,
     headers: {},
-    };
+  };
 
   if (method != "GET") {
     options.method = method;
@@ -11,13 +11,18 @@ export default async function requester(method, url, data, accessToken) {
   if (accessToken) {
     options.headers["X-Authorization"] = accessToken;
   }
-  
+
   if (data != undefined) {
     options.headers["Content-Type"] = "application/json";
     options.body = JSON.stringify(data);
   }
 
   const response = await fetch(url, options);
+
+  if(response.status == 204){
+    return response;
+  }
+
   const result = await response.json();
 
   return result;

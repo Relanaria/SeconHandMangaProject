@@ -1,9 +1,18 @@
 import { Link } from "react-router-dom";
 import { useAuthContext } from "../../contexts/AuthContext";
+import { useLogout } from "../../hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 
 export default function NavBar() {
     const authUserContext = useAuthContext();
     // remember to remove onClick event from logoutLink
+    const navigate = useNavigate();
+    const logout = useLogout();
+
+    const handleLogout = () => {
+        logout(authUserContext.accessToken);
+        navigate('/');
+    };
 
     return (
         <nav className="navbar">
@@ -33,7 +42,7 @@ export default function NavBar() {
                         <li><Link to="/register">Register</Link></li>
                     </>
                 )}
-                {authUserContext.isAuthenticated && <li><Link to="/logout">Logout</Link></li>}
+                {authUserContext.isAuthenticated && <li><Link to="/" onClick={handleLogout}>Logout</Link></li>}
             </div>
         </nav>
     );

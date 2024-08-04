@@ -41,7 +41,6 @@ export function useGetFavourites(ownerId, setIsFetching) {
 export function useDeleteFavourite(setFavorites) {
 
   const deleteFavourite = async (favouriteId, accessToken) => {
-    
     const result = await favouriteAPI.deleteFavourite(favouriteId, accessToken);
     setFavorites((prevFavourites) => prevFavourites.filter((fav) => fav._id !== favouriteId));
   };

@@ -16,3 +16,9 @@ export async function register(userData) {
 
   return authRegisterData;
 };
+
+export async function logout(accessToken){
+  const authLogoutData = await request.get(`${BASE_URL}/logout`, undefined, accessToken)
+
+  return authLogoutData;
+}

@@ -1,4 +1,4 @@
-import { login, register } from "../api/auth-api";
+import { login, register, logout } from "../api/auth-api";
 import { useState, useEffect } from "react";
 
 import { useAuthContext } from "../contexts/AuthContext";
@@ -36,3 +36,19 @@ export const useRegister = () =>{
 
   return registerHandler;
 };
+
+export const useLogout = () =>{
+  const authState = useAuthContext();
+
+  const logoutHandler = async (accessToken) =>{
+    
+    const result = await logout(accessToken);
+    console.log(result);
+    
+    if(result.status == 204){
+      authState.logout();
+    }
+  }
+
+  return logoutHandler;
+}
