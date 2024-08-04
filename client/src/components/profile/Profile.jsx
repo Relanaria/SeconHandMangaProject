@@ -11,9 +11,10 @@ const ProfilePage = () => {
     const authUserContext = useAuthContext();
 
     const [favorites, setFavorites] = useGetFavourites(authUserContext.userId);
-
+    
     const deleteHandleClick = useDeleteFavourite(setFavorites);
-
+    console.log(favorites);
+    
 
     return (
         <div className="profile-page">

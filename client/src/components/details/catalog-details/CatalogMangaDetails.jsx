@@ -24,7 +24,7 @@ export default function CatalogMangaDetails(){
     const [comments, setComments] = useGetComments(mangaId);
     
     const authUserContext = useAuthContext();
-    const favoriteActive = useCheckFavourite(authUserContext.userId, mangaId);
+    const isExisting = useCheckFavourite(authUserContext.userId, mangaId);
 
     const createComment = useCreateComment();
     const createFavourite = useCreateFavourite();
@@ -40,12 +40,12 @@ export default function CatalogMangaDetails(){
             setComments(oldComments => [...oldComments, result]);
             
         } catch (error) {
-            alert(error.message); 
+            alert(error.message);
         }
     });
 
-   async function handeClick () {
-       await createFavourite(manga, authUserContext.accessToken);
+   async function addToFavouritesHandleClick () {
+     const result =  await createFavourite(mangaId, authUserContext.accessToken);
        navigate('/profile')
     }
 
@@ -63,8 +63,9 @@ export default function CatalogMangaDetails(){
                             <h3 className="manga-author">Author: {manga.author}</h3>
                             <p className="manga-author">Genre: {manga.genre}</p>
                             <p className="manga-description">Description: {manga.description}</p>
-                            {authUserContext.isAuthenticated && !favoriteActive ?<>
-                            <button className="favorite-btn" onClick={handeClick}>⭐</button>
+                            {authUserContext.isAuthenticated && !isExisting ?
+                            <>
+                            <button className="favorite-btn" onClick={addToFavouritesHandleClick}>⭐</button>
                             </>
                             : 
                             ''

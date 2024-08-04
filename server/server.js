@@ -1348,10 +1348,7 @@
                 "title": "Dorohedoro",
                 "author": "Q Hayashida",
                 "description": "In a city so dismal it's known only as 'the Hole,' a clan of Sorcerers has been plucking people off the streets to use as guinea pigs for atrocious experiments in the black arts.",
-                "genre": [
-                    "Fantasy",
-                    "Horror"
-                ],
+                "genre": "Fentasy",
                 "volume": 1,
                 "price": 10,
                 "state": "Used - Good",
@@ -1365,10 +1362,7 @@
                     "title": "The Beginning After the End",
                     "author": "TurtleMe",
                     "description": "A former king in a new world must navigate life as both a child and a warrior.",
-                    "genre": [
-                        "Fantasy",
-                        "Adventure"
-                    ],
+                    "genre": "Adventure",
                     "volume": 1,
                     "price": 10,
                     "state": "New",
@@ -1382,10 +1376,7 @@
                     "author": "Masashi Kishimoto",
                     "description": "A young ninja strives to be the best in his village.",
                     "owner": "owner_id",
-                    "genre": [
-                        "Adventure",
-                        "Fantasy"
-                    ],
+                    "genre": "Adventure",
                     "volume": 1,
                     "price": 10,
                     "state": "New",
@@ -1398,10 +1389,7 @@
                     "title": "Solo Leveling",
                     "author": "Chugong",
                     "description": "In a world where hunters — human warriors who possess supernatural abilities — must battle deadly monsters to protect mankind from certain annihilation, a notoriously weak hunter named Sung Jinwoo finds himself in a seemingly endless struggle for survival.",
-                    "genre": [
-                        "Fantasy",
-                        "Action"
-                    ],
+                    "genre": "Fentasy",
                     "volume": 5,
                     "price": 15,
                     "state": "Perfect",
@@ -1506,15 +1494,30 @@
     			_id: "0a272c58-b7ea-4e09-a000-7ec988248f66"
     		},
             "dd219abd-19c6-4f06-b25a-a6146767f308": {
-                "_ownerId": "48dad3e1-5703-43f0-9327-270b3016cde9",
+                "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
                 "username": "Dobromir1336",
                 "mangaId": "35395294-9994-46e6-aecb-cc492a1cb305",
                 "comment": "fgdgfds",
                 "_createdOn": 1722704414865,
                 "_id": "dd219abd-19c6-4f06-b25a-a6146767f308"
+            },
+           "ca65f667-dce6-483d-a7e1-075db2f76282": {
+                "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
+                "username": "Peter",
+                "mangaId": "7fc63f5c-aedd-4639-a4ae-54026afbce69",
+                "comment": "Best manga ever",
+                "_createdOn": 1722779573975,
+                "_id": "ca65f667-dce6-483d-a7e1-075db2f76282"
             }
     	},
     	favourites: {
+
+           "467304e8-6a4d-424d-b9c0-8dc1f5477edf": {
+                "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
+                "mangaId": "7fc63f5c-aedd-4639-a4ae-54026afbce69",
+                "_createdOn": 1722778135274,
+                "_id": "467304e8-6a4d-424d-b9c0-8dc1f5477edf"
+            }
     	},
     };
     var rules$1 = {

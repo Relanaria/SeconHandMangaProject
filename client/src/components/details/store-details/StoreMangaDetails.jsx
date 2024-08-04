@@ -1,8 +1,10 @@
 import React, {useState} from 'react';
 import { Link, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { useGetOneMangaStore } from '../../../hooks/useMangaStore';
 import { useAuthContext } from '../../../contexts/AuthContext';
+import { useDeleteManga } from '../../../hooks/useMangaStore';
 
 import Spinner from '../../spinner/Spinner';
 
@@ -12,8 +14,16 @@ export default function StoreMangaDetails(props){
     const { mangaId } = useParams()
     const [isPending, setIsPending] = useState(true);
     const [manga, setManga] = useGetOneMangaStore(mangaId, setIsPending);
+    const navigate = useNavigate();
+
+    const deleteManga = useDeleteManga();
 
     const authUserContext = useAuthContext();
+    
+    async function buyHandleClick(){
+        await deleteManga(mangaId, authUserContext.accessToken);
+       navigate('/store');
+    }
     return (
         <>
         {isPending ?  <Spinner/> :
@@ -32,11 +42,14 @@ export default function StoreMangaDetails(props){
                  <p className="manga-price">Price: ${manga.price}</p>
 
                         {authUserContext.isAuthenticated ? <div className="actions">
-                         <button className="btn buy-btn" onClick={() => buyManga(manga._id)}>Buy</button>
+                         {/* <button className="btn buy-btn" onClick={buyHandleClick}>Buy</button> */}
                          {authUserContext.userId == manga._ownerId ? 
-                            <>
-                                <Link to={`/edit/${manga._id}`} className="btn edit-btn">Edit</Link>
-                                <button className="btn delete-btn">Delete</button>
+                            <> 
+                                <Link 
+                                to={`/store/edit/${manga._id}`}
+                                state={ {mangaDetails: manga} }
+                                className="btn edit-btn">Edit</Link>
+                                <button className="btn delete-btn" onClick={buyHandleClick}>Delete</button>
                             </>
                             : " " }
                      </div>: ''}

@@ -6,12 +6,8 @@ export function useCheckFavourite(ownerId, mangaId) {
   const [favourites, setFavourites] = useGetFavourites(ownerId);
 
   useEffect(() => {
-    console.log(favourites.length);
-    console.log(favourites);
-    
-    
     if (favourites.length > 0) {
-      const favouriteExists = favourites.some(favourite => favourite.manga._id === mangaId);
+      const favouriteExists = favourites.some(favourite => favourite.mangaId === mangaId);
       setIsExisting(favouriteExists);
     }
   }, [favourites, mangaId]);

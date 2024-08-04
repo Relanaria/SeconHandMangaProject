@@ -47,3 +47,27 @@ export function useGetOneMangaStore(mangaId, setIsPending) {
 
     return [manga, setManga];
 }
+
+export function useEditManga(){
+    const editManga = async (mangaId, data, accessToken) =>{
+       const result = await mangaAPI.editManga(directory, mangaId, data, accessToken);
+
+       if(result.code == 401){
+        throw new Error("Unauthorized");
+       };
+    }
+
+    return editManga;
+}
+
+
+export function useDeleteManga(){
+
+  const deleteManga = async (mangaId, accessToken) => {
+    console.log(mangaId, accessToken);
+    
+    const result = await mangaAPI.deleteManga(directory, mangaId, accessToken);
+  };
+
+  return deleteManga;
+}

@@ -3,11 +3,11 @@ import { useState, useEffect } from "react";
 import favouriteAPI from "../api/favourite-api";
 
 export function useCreateFavourite() {
-  const createFavourite = async (mangaData, accessToken) => {
+  const createFavourite = async (mangaId, accessToken) => {
     const newFavouriteManga = {
-      manga: mangaData,
+      mangaId: mangaId
     };
-
+  
     const result = await favouriteAPI.addMangaToFavourite(
       newFavouriteManga,
       accessToken
