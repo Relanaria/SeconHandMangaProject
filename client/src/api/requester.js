@@ -1,4 +1,4 @@
-export default async function requester(method, url, data, accessToken) {
+export default async function requester(method, url, data, accessToken, adminAccess) {
   const options = {
     method,
     headers: {},
@@ -7,10 +7,14 @@ export default async function requester(method, url, data, accessToken) {
   if (method != "GET") {
     options.method = method;
   }
-
-  if (accessToken) {
+  
+  if(adminAccess){
+    options.headers["X-Admin"] = accessToken;
+  }else if (accessToken) {
     options.headers["X-Authorization"] = accessToken;
   }
+
+ 
 
   if (data != undefined) {
     options.headers["Content-Type"] = "application/json";
@@ -31,4 +35,5 @@ export default async function requester(method, url, data, accessToken) {
 export const get = requester.bind(null, "GET");
 export const post = requester.bind(null, "POST");
 export const put = requester.bind(null, "PUT");
+export const patch = requester.bind(null, "PATCH");
 export const del = requester.bind(null, "DELETE");

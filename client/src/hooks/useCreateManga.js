@@ -7,7 +7,7 @@ const directory = 'productList';
 export const useCreateManga = () =>{
 
     const createManga = async (mangaData, userToken) =>{
-        const result = await mangaAPI.createManga(directory, mangaData, userToken);
+        const result = await mangaAPI.createManga(directory, {...mangaData, statusSold: 'false'}, userToken);
 
         if(result.code == 401){
             throw new Error("Unauthorized");

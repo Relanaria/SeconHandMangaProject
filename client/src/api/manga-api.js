@@ -12,13 +12,16 @@ const deleteManga = (directory, mangaId, accessToken) => request.del(`${BASE_URL
 
 const editManga = (directory, mangaId, data, accessToken) => request.put(`${BASE_URL}/${directory}/${mangaId}`, data, accessToken);
 
+const buyManga = (directory, mangaId, data, accessToken, adminAccess) => request.put(`${BASE_URL}/${directory}/${mangaId}`, data, accessToken, adminAccess);
+
 
 const mangaAPI = {
     getAllManga,
     getMangaById,
     createManga,
     deleteManga,
-    editManga
+    editManga,
+    buyManga
 }
 
 export default mangaAPI 

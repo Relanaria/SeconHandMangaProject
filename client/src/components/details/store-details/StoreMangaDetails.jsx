@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { useGetOneMangaStore } from '../../../hooks/useMangaStore';
 import { useAuthContext } from '../../../contexts/AuthContext';
 import { useDeleteManga } from '../../../hooks/useMangaStore';
+import { useBuyManga } from '../../../hooks/useMangaStore';
 import { useMangaContext } from '../../../contexts/CurrentMangaContext';
 
 
@@ -21,9 +22,10 @@ export default function StoreMangaDetails(props){
     const authUserContext = useAuthContext();
     const navigate = useNavigate();
     const deleteManga = useDeleteManga();
+    const buyManga = useBuyManga()
 
     
-    async function buyHandleClick(){
+    async function deleteHandleCLick(){
         let deleteError = {};
         try {
             
@@ -32,6 +34,19 @@ export default function StoreMangaDetails(props){
         } catch (error) {
             deleteError.isNotAuthorized = error.message;
             setErrors(deleteError)
+            return;
+        }
+    }
+
+    async function buyMangaHandleCiick() {
+        let buyError = {};
+        try {
+            
+            await buyManga(mangaId, manga, authUserContext.accessToken);
+            navigate('/store');
+        } catch (error) {
+            buyError.isNotAuthorized = error.message;
+            setErrors(buyError)
             return;
         }
     }
@@ -52,18 +67,20 @@ export default function StoreMangaDetails(props){
                  <p className="manga-price">State: {manga.state}</p>
                  <p className="manga-price">Price: ${manga.price}</p>
 
-                        {authUserContext.isAuthenticated ? <div className="actions">
-                         {/* <button className="btn buy-btn" onClick={buyHandleClick}>Buy</button> */}
+                        {authUserContext.isAuthenticated ? 
+                        <div className="actions">
                          {authUserContext.userId == manga._ownerId ? 
                             <> 
                                 <Link
                                 to={`/store/edit/${manga._id}`}
                                 state={ {mangaDetails: manga} }
                                 className="btn edit-btn">Edit</Link>
-                                <button className="btn delete-btn" onClick={buyHandleClick}>Delete</button>
+                                <button className="btn delete-btn" onClick={deleteHandleCLick}>Delete</button>
                             </>
-                            : " " }
-                     </div>: ''}
+                            :  
+                            manga.statusSold == "false" && <button className="btn buy-btn" onClick={buyMangaHandleCiick}>Buy</button>
+                            }
+                        </div>: ''}
                     {errors.isNotAuthorized && <p className="error">{errors.isNotAuthorized}</p>}
              </div>
          </div>
