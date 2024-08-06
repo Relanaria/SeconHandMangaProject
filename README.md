@@ -63,13 +63,12 @@
 - [x] Dynamic update of comment section without need to refresh page
 
 ## 6. Favourites
-- [x] Create service for nested resource `comments`
+- [x] Create service for nested resource `favourites`
 - [x] Post favourite manga to server
-- [x] Read favourite manga from server
+- [x] Read favourite manga from server via relation
 - [x] Add favourite manga in the component
 - [x] Remove favourite manga from server and profile page list
 - [x] Clear form
-- [x] Validate favourite manga form
 
 ## 7. Buy Manga from store
 - [x] Option to buy manga from store
@@ -96,6 +95,9 @@
   - [x] Register
   - [x] Logout
 - [x] Auth state & context
+  - [x] User context
+  - [x] currentManga context
+   - [x] Validate if the user trying to edit the current manga is the owner!
 - [x] Token management
 - [x] Login
   - [x] Add form validation
@@ -106,7 +108,28 @@
 - [x] Logout
 - [x] Authorized Requests
 
-## 10. UI Implementation 
+## 10. Route Guards
+- [x] Route Guard for Guests
+ - [x] Only guest users should be able to navigate to login, register page
+- [x] Route Guard for User
+ - [x] Only logged in users should be able to navigate to edit, createStore, profile, contact us page
+- [x] Route Guard for UserEdit
+ - [x] Only owner of manga should be able to navigate to edit/mangaId page
+
+## 11. Utils
+- [x] Check if favourite already exist
+  - [x] Validates if the current (datails page) manga is already added to your favourites list
+- [x] Filter manga by genre
+ - [x] For catalog and store page
+- [x] Validate Inputs and return appropriate error messages
+ - [x] Validate Register form input 
+ - [x] Validate Login form input
+ - [x] Validate Edit form input for catalog and store
+ - [x] Validate comment input
+ - [x] Validate contact us
+
+
+## 12. UI Implementation 
 - [x] Dynamic navigation
   - [x] Crean and simple navigation
 - [x] Consistent design across all pages and elements
@@ -126,3 +149,34 @@
   - [x] Adding a manga to favourite
   - [x] Removing a manga from favourite
 - [x] Dynamic comment section under manga in catalog/details page
+
+## 13. Technologies Used
+
+- [x] React.js
+- [x] React Router
+- [x] Context API
+- [x] Custom Hooks
+- [x] CSS for styling
+
+## 14. Folder Structure
+
+- [x] `src/`: Contains all source code
+  - [x] `api/`: API request functions
+  - [x] `components/`: React components
+  - [x] `contexts/`: Context API providers
+  - [x] `hooks/`: Custom React hooks
+  - [x] `util/`: Utility functions
+- [x] `public/`: Public assets
+- [x] `README.md`: Project documentation
+
+## 15. Usage
+
+- [x] Catalog -> Browse all available manga. Leave a comment(oprtional).
+- [x] Datails -> View detailed infromation about a specific manga.
+- [x] Store -> Browse all available manga for sale.
+- [x] List Product -> List your own manga for sale.
+- [x] Contact us -> Send us an email.
+- [x] About us -> Brief information about our team and ideas.
+- [x] Login -> Login into your account and be able to expirience some of our features.
+- [x] Register -> Create your own account.
+- [x] Profile -> information about your account and your favourite manga.
