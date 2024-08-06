@@ -28,6 +28,7 @@ export default function NavBar() {
                 <li><Link to="/store">Store</Link></li>
                 {authUserContext.isAuthenticated && 
                 <>
+                {authUserContext.accountStatus == 'Admin' && <li><Link to='/createCatalogItem'>Create Catalog</Link></li>}
                 <li><Link to="/createItem">List Product</Link></li>
                 <li><Link to="/profile">Profile</Link></li>
                 </>

@@ -96,6 +96,43 @@ function validateCreateEditInputs(values) {
   return errors;
 }
 
+
+function validateCreateCatalogInputs(values) {
+  let errors = {};
+
+  if (!values.title) {
+    errors.title = "Title is required";
+  }
+
+  if (!values.author) {
+    errors.author = "Author is required";
+  }
+
+  if (!values.description) {
+    errors.description = "Description is required";
+  }
+
+  if(!values.genre || values.genre == 'Select genre') {
+    errors.genre = "Genre is required";
+  }
+
+  if (!values.imgUrl) {
+    errors.imgUrl = "Image URL is required";
+  }
+
+  if (!values.volume) {
+    errors.volume = "Volume is required";
+  } else if (isNaN(values.volume)) {
+    errors.volume = "Volume must be a positive number";
+  }
+
+  if (!values.state) {
+    errors.state = "State is required";
+  }
+
+  return errors;
+}
+
 function validateComment(commentInput){
   let errors = {};
 
@@ -167,7 +204,8 @@ const valitadeInputs = {
   validateCreateEditInputs,
   validateComment,
   validateContactUs,
-  validateCatalogEditInputs
+  validateCatalogEditInputs,
+  validateCreateCatalogInputs
 };
 
 export default valitadeInputs;

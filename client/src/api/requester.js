@@ -1,7 +1,9 @@
-export default async function requester(method, url, data, accessToken, adminAccess) {
+export default async function requester(method, url, data, accessToken, adminAccess, signal) {
+  const controller = new AbortController();
   const options = {
     method,
     headers: {},
+    signal
   };
 
   if (method != "GET") {
@@ -28,7 +30,7 @@ export default async function requester(method, url, data, accessToken, adminAcc
   }
 
   const result = await response.json();
-
+  
   return result;
 }
 

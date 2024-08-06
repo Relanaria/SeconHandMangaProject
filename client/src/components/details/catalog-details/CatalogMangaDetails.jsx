@@ -62,7 +62,10 @@ export default function CatalogMangaDetails(){
     });
 
    async function addToFavouritesHandleClick () {
-        const result =  await createFavourite(mangaId, authUserContext.accessToken);
+    console.log(mangaId,authUserContext.accessToken);
+        
+    const result =  await createFavourite(mangaId, authUserContext.accessToken);
+
        navigate('/profile')
     }
 

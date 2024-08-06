@@ -7,7 +7,7 @@ export function useCreateFavourite() {
     const newFavouriteManga = {
       mangaId: mangaId
     };
-  
+    
     const result = await favouriteAPI.addMangaToFavourite(
       newFavouriteManga,
       accessToken
@@ -24,15 +24,25 @@ export function useCreateFavourite() {
 
 export function useGetFavourites(ownerId, setIsFetching) {
   const [favourites, setFavourites] = useState([]);
-
+  
   useEffect(() => {
+    const controller = new AbortController();
+    const signal = controller.signal;
+
     (async () => {
       const encodedOwnerId = encodeURIComponent(`"${ownerId}"`);
-
-      const result = await favouriteAPI.getAllFavourites(encodedOwnerId);
+      console.log(signal);
+      
+      const result = await favouriteAPI.getAllFavourites(encodedOwnerId, signal);
+      
       setIsFetching(false);
       setFavourites(result);
     })();
+
+    return () => {
+      console.log('Aboard');
+      controller.abort();
+    };
   }, []);
 
   return [favourites, setFavourites];

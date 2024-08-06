@@ -8,7 +8,8 @@ import StoreMangaDetails from './components/details/store-details/StoreMangaDeta
 import CatalogMangaDetails from './components/details/catalog-details/CatalogMangaDetails';
 import EditMangaPage from "./components/details/store-details/edit/EditStore";
 import EditCatalog from "./components/details/catalog-details/edit/EditCatalog";
-import CreateItem from './components/create-item/CreateItem';
+import CreateItem from './components/create-item/createEditForm/CreateItem';
+import CreateCatalogItem from "./components/create-item/createCatalogForm/CreateCatalogItem";
 import ContactUs from "./components/contact-us/ContactUs";
 import AuthGuardUserEdit from "./components/common/AuthGuardUserEdit";
 import AuthGuardsUser from "./components/common/AuthGuardsUser";
@@ -38,7 +39,7 @@ function App() {
         <Route path="/" element={<HomePage />}/>
 
         <Route path="/catalog" element={<Catalog />} />
-        <Route path="/catalog/:mangaId/details" element={<CatalogMangaDetails />} /> 
+        <Route path="/catalog/:mangaId/details" element={<CatalogMangaDetails />} />
 
         <Route path="/store" element={<Store />} /> 
         <Route path="/store/:mangaId/details" element={ <StoreMangaDetails /> } /> 
@@ -47,11 +48,11 @@ function App() {
 
         <Route element={<AuthGuardUserEdit/>}>
           <Route path="/store/edit/:mangaId" element={ <EditMangaPage /> }/>
-
         </Route>
 
         <Route element={<AuthGuardsUser/>}>
           <Route path="/catalog/edit/:mangaId" element={ <EditCatalog /> }/>
+          <Route path="/createCatalogItem" element={ <CreateCatalogItem /> }/>
           <Route path='/createItem' element={<CreateItem />}/>
           <Route path="/contact-us" element={<ContactUs />} /> 
           <Route path="/profile" element={<ProfilePage/>}/>

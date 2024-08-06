@@ -18,8 +18,6 @@ export const useCreateComment = () =>{
         if(result.code == 401){
             throw new Error("Unauthorized");
         }
-        console.log(result);
-        
         if(result.code === 403){
             throw new Error("Invalid accessToken");
         }
@@ -29,18 +27,30 @@ export const useCreateComment = () =>{
     return createComment;
 };
 
-export const useGetComments = (mangaId) =>{
-    const [comments, setComments] = useState([])
-    
-    useEffect(() =>{
-        (async () =>{
-            const encodeMangaId = encodeURIComponent(`"${mangaId}"`);
-            
-            const result = await commentsAPI.getComments(encodeMangaId);
-            
-            setComments(result);
+export const useGetComments = (mangaId) => {
+    const [comments, setComments] = useState([]);
+
+    useEffect(() => {
+        const controller = new AbortController();
+        const signal = controller.signal;
+
+        (async () => {
+            try {
+                const encodeMangaId = encodeURIComponent(`"${mangaId}"`);
+                const result = await commentsAPI.getComments(encodeMangaId, { signal });
+
+                setComments(result);
+            } catch (error) {
+                if (error.name !== 'AbortError') {
+                    console.error('Failed to fetch comments:', error);
+                }
+            }
         })();
-    },[mangaId])
-    
+
+        return () => {
+            controller.abort();
+        };
+    }, [mangaId]);
+
     return [comments, setComments];
-}
+};

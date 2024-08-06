@@ -29,7 +29,7 @@ export default function EditCatalog(props) {
   const { mangaId } = useParams();
 
   const [isPending, setIsPending] = useState(true);
-  const [manga, setManga] = useGetOneMangaCatalog(mangaId,setIsPending)
+  const [manga, setManga] = useGetOneMangaCatalog(mangaId, setIsPending)
 
   const authUserContext = useAuthContext();
   const editMangaCatalog = useEditMangaCatalog()
