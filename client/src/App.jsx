@@ -6,7 +6,8 @@ import  MangaContextProvider  from "./contexts/CurrentMangaContext";
 import '@fortawesome/fontawesome-free/css/all.css';
 import StoreMangaDetails from './components/details/store-details/StoreMangaDetails';
 import CatalogMangaDetails from './components/details/catalog-details/CatalogMangaDetails';
-import EditMangaPage from "./components/details/store-details/edit/Edit";
+import EditMangaPage from "./components/details/store-details/edit/EditStore";
+import EditCatalog from "./components/details/catalog-details/edit/EditCatalog";
 import CreateItem from './components/create-item/CreateItem';
 import ContactUs from "./components/contact-us/ContactUs";
 import AuthGuardUserEdit from "./components/common/AuthGuardUserEdit";
@@ -46,9 +47,11 @@ function App() {
 
         <Route element={<AuthGuardUserEdit/>}>
           <Route path="/store/edit/:mangaId" element={ <EditMangaPage /> }/>
+
         </Route>
 
         <Route element={<AuthGuardsUser/>}>
+          <Route path="/catalog/edit/:mangaId" element={ <EditCatalog /> }/>
           <Route path='/createItem' element={<CreateItem />}/>
           <Route path="/contact-us" element={<ContactUs />} /> 
           <Route path="/profile" element={<ProfilePage/>}/>

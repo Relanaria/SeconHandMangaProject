@@ -106,6 +106,40 @@ function validateComment(commentInput){
   return errors;
 }
 
+function validateCatalogEditInputs(values) {
+  let errors = {};
+
+  if (!values.title) {
+    errors.title = "Title is required";
+  }
+
+  if (!values.author) {
+    errors.author = "Author is required";
+  }
+
+  if (!values.description) {
+    errors.description = "Description is required";
+  }
+
+  if(!values.genre || values.genre == 'Select genre') {
+    errors.genre = "Genre is required";
+  }
+
+  if (!values.imgUrl) {
+    errors.imgUrl = "Image URL is required";
+  }
+
+  if (!values.volume) {
+    errors.volume = "Volume is required";
+  } else if (isNaN(values.volume)) {
+    errors.volume = "Volume must be a positive number";
+  }
+
+
+  return errors;
+}
+
+
 function validateContactUs(contactData){
   let errors = {};
   const emailRegex = /^[a-zA-Z0-9]+@[a-zA-Z]+\.[a-zA-Z]+$/;
@@ -132,7 +166,8 @@ const valitadeInputs = {
   validateLoginInput,
   validateCreateEditInputs,
   validateComment,
-  validateContactUs
+  validateContactUs,
+  validateCatalogEditInputs
 };
 
 export default valitadeInputs;

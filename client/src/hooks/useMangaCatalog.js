@@ -46,6 +46,22 @@ export function useGetOneMangaCatalog(mangaId, setIsPending) {
     return [manga, setManga];
 }
 
+export function useEditMangaCatalog(){
+    const editManga = async (mangaId, data, accessToken) =>{
+       const result = await mangaAPI.editManga(directory, mangaId, data, accessToken);
+
+       if(result.code == 401){
+        throw new Error("Unauthorized");
+       };
+       
+       if(result.code == 403){
+        throw new Error('Edit action not authorized!');
+        }
+    }
+
+    return editManga;
+}
+
 
 export function useDeleteManga(){
 

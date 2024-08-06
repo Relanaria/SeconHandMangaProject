@@ -12,7 +12,7 @@ export default function AuthGuardUserEdit() {
         return <Navigate to="/login" />;
     };
     console.log(userId);
-    console.log(mangaDetails);
+    console.log(mangaDetails._ownerId);
     
     
     console.log('here2'); 

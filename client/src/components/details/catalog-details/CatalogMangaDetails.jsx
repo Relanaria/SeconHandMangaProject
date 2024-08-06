@@ -109,7 +109,7 @@ export default function CatalogMangaDetails(){
                             }
                             {authUserContext.accountStatus != undefined ? 
                                 <div className="owner-actions">
-                                    <Link to={`catalog/edit/${manga._id}`} className="edit-btn">Edit</Link>
+                                    <Link to={`/catalog/edit/${manga._id}`} className="edit-btn">Edit</Link>
                                     <button className="delete-btn" onClick={deleteHandleCLick}>Delete</button>
                                 </div>
                                 : 
