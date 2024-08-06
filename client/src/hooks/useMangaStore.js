@@ -39,7 +39,7 @@ export function useGetAllMangaStoreLatest(setIsFetching) {
     useEffect(()=>{
        (async()=>{
         try {
-            const result = await mangaAPI.getAllManga(directoryForHomePage, signal);
+            result = await mangaAPI.getAllManga(directoryForHomePage, signal);
         } catch (error) {
             console.log(error);
         }

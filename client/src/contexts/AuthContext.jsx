@@ -12,7 +12,16 @@ export const AuthContext = createContext({
 });
 
 export default function AuthContextProvider(props) {
-  const [authState, setAuthState] = useState({});
+  const [authState, setAuthState] = useState(() =>{
+
+    const localeState = localStorage.getItem("authState");
+
+    if(localeState){
+      return JSON.parse(localeState);
+    }
+    
+    return {};
+  });
 
 
   const changeAuthState = (state) => {

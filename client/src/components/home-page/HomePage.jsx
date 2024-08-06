@@ -10,8 +10,7 @@ import { useState } from 'react';
 export default function HomePage(){;
     const [isFetching, setIsFetching] = useState(true);
     const [storeList, setStoreList] = useGetAllMangaStoreLatest(setIsFetching);
-    const [catalogList, setCatalogList] = useGetAllMangaCatalogLatest();
-    
+    const [catalogList, setCatalogList] = useGetAllMangaCatalogLatest();        
 
     return(
         <div className="homepage">
@@ -28,7 +27,7 @@ export default function HomePage(){;
         <div className="store-section">
             <h2>Latest additions to store!</h2>
             <div className="manga-panels">
-                {!isFetching > 0 ? storeList.map(manga => <LatestAdditionsStore key={manga._id} manga={manga} /> ) : <Spinner />}
+                {!isFetching  ? storeList.map(manga => <LatestAdditionsStore key={manga._id} manga={manga} /> ) : <Spinner />}
                 {storeList.length == 0 ? <p>There are no new additions to the store!</p> : ""}
             </div>
         </div>
