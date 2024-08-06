@@ -38,7 +38,7 @@ export default function CatalogMangaDetails(){
         comment: '',
     };
 
-    const {values, changeHandler, submitHandler} = useForm(initialValues, async (commentData) => {
+    const {values, changeHandler, submitHandler, setValues} = useForm(initialValues, async (commentData) => {
         let comentInput = valitadeInputs.validateComment(commentData);
 
         try {
@@ -51,7 +51,7 @@ export default function CatalogMangaDetails(){
             const result = await createComment(commentData, mangaId, authUserContext.username, authUserContext.accessToken);
             
             setComments(oldComments => [...oldComments, result]);
-            
+            setValues(initialValues)
         } catch (error) {
             comentInput.comment = error.message;
             setErrors(comentInput);
