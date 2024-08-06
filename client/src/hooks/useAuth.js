@@ -43,7 +43,6 @@ export const useLogout = () =>{
   const logoutHandler = async (accessToken) =>{
     
     const result = await logout(accessToken);
-    console.log(result);
     
     if(result.status == 204){
       authState.logout();

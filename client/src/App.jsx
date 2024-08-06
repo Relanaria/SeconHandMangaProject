@@ -8,6 +8,7 @@ import CatalogMangaDetails from './components/details/catalog-details/CatalogMan
 import EditMangaPage from "./components/details/store-details/edit/Edit";
 import CreateItem from './components/create-item/CreateItem';
 import ContactUs from "./components/contact-us/ContactUs";
+import AuthGuard from "./components/commong/AuthGuards";
 import HomePage from "./components/home-page/HomePage";
 import NotFound from './components/not-found/NotFound';
 import ProfilePage from "./components/profile/Profile";
@@ -40,7 +41,7 @@ function App() {
         <Route path='/createItem' element={<CreateItem />}/>
 
         <Route path="/about" element={<AboutUs />} />
-        <Route path="/contact-us" element={<ContactUs />} /> 
+        <Route path="/contact-us" element={<AuthGuard><ContactUs /></AuthGuard>} /> 
         <Route path="/profile" element={<ProfilePage/>}/>
         <Route path="/login" element={<Login />} /> 
         <Route path="/register" element={<Register />} /> 
