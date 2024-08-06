@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { useGetOneMangaCatalog } from '../../../hooks/useMangaCatalog';
 import { useCreateFavourite } from '../../../hooks/useFavourite';
+import { useDeleteManga } from '../../../hooks/useMangaCatalog';
 import { useAuthContext } from '../../../contexts/AuthContext';
 import { useCreateComment } from '../../../hooks/useComment';
 import { useGetComments } from '../../../hooks/useComment';
@@ -33,6 +34,7 @@ export default function CatalogMangaDetails(){
     
     const createComment = useCreateComment();
     const createFavourite = useCreateFavourite();
+    const deleteManga = useDeleteManga();
 
     const initialValues = {
         comment: '',
@@ -60,8 +62,27 @@ export default function CatalogMangaDetails(){
     });
 
    async function addToFavouritesHandleClick () {
-     const result =  await createFavourite(mangaId, authUserContext.accessToken);
+        const result =  await createFavourite(mangaId, authUserContext.accessToken);
        navigate('/profile')
+    }
+
+    async function deleteHandleCLick(){
+        let deleteError = {};
+        try {
+            
+            await deleteManga(mangaId, authUserContext.accessToken);
+            navigate('/catalog');
+        } catch (error) {
+            if(error.message == "Edit action not authorized!"){
+                authUserContext.logout();
+                navigate('/login');
+                return;
+            }
+            
+            deleteError.isNotAuthorized = error.message;
+            setErrors(deleteError)
+            return;
+        }
     }
 
 
@@ -88,12 +109,13 @@ export default function CatalogMangaDetails(){
                             }
                             {authUserContext.accountStatus != undefined ? 
                                 <div className="owner-actions">
-                                    <Link to={`/edit/${manga._id}`} className="edit-btn">Edit</Link>
-                                    <button className="delete-btn" onClick={() => deleteManga(manga._id)}>Delete</button>
+                                    <Link to={`catalog/edit/${manga._id}`} className="edit-btn">Edit</Link>
+                                    <button className="delete-btn" onClick={deleteHandleCLick}>Delete</button>
                                 </div>
                                 : 
                                 ' '
                             }
+                            {errors.isNotAuthorized && <p className="error">{errors.isNotAuthorized}</p>}
                         </div>
                     </div>
                     <div className="comments-section">
