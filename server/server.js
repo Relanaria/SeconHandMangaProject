@@ -1345,6 +1345,7 @@
        
                 "0b00026a-e9fd-4dd8-8482-d2a9ceaf6556": {
                 "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+                "statusSold": "false",
                 "title": "Dorohedoro",
                 "author": "Q Hayashida",
                 "description": "In a city so dismal it's known only as 'the Hole,' a clan of Sorcerers has been plucking people off the streets to use as guinea pigs for atrocious experiments in the black arts.",
@@ -1359,6 +1360,7 @@
 
                 "7fc63f5c-aedd-4639-a4ae-54026afbce69": {
                     "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+                    "statusSold": "false",
                     "title": "The Beginning After the End",
                     "author": "TurtleMe",
                     "description": "A former king in a new world must navigate life as both a child and a warrior.",
@@ -1372,6 +1374,7 @@
                 },
                  "8d3248f8-0708-48f7-a681-3bf6f87bbd7b": {
                     "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+                    "statusSold": "false",
                     "title": "Naruto",
                     "author": "Masashi Kishimoto",
                     "description": "A young ninja strives to be the best in his village.",
@@ -1386,6 +1389,7 @@
                 },
                 "bc7f7fd9-2530-4ad3-941c-a641c578428f": {
                     "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
+                    "statusSold": "false",
                     "title": "Solo Leveling",
                     "author": "Chugong",
                     "description": "In a world where hunters — human warriors who possess supernatural abilities — must battle deadly monsters to protect mankind from certain annihilation, a notoriously weak hunter named Sung Jinwoo finds himself in a seemingly endless struggle for survival.",
@@ -1399,6 +1403,7 @@
                 },
                 "580ec2c5-8e43-4d90-97a2-4eba0a8b8b7d": {
                     "_ownerId": "5ab243f1-3c93-4ce0-b8b2-ece6b5df4b6a",
+                    "statusSold": "false",
                     "title": "Goblin Slayer",
                     "author": "Dobrev",
                     "description": "In a world of fantasy, adventurers come from far and wide to join the Guild. They complete contracts to earn gold and glory. An inexperienced priestess joins her first adventuring party, but comes into danger after her first contact involving goblins goes wrong.",
@@ -1412,6 +1417,7 @@
                 },
                 "ee2e4705-8bf3-4e46-ba13-5693dd630d89": {
                     "_ownerId": "f942e30f-46cb-43a6-981f-49bf00e84531",
+                    "statusSold": "false",
                     "title": "Spicy Kitty",
                     "author": "Mela",
                     "description": "Just a cute spicy kitty",

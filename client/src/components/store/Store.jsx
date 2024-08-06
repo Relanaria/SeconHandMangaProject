@@ -37,7 +37,7 @@ export default function Store() {
             {filteredBooks.length > 0 ? 
             <>
                 <div className="catalog-items">
-                    {(filteredBooks.map(manga => <StoreItem key={manga._id} manga={manga}/>))} 
+                    {(filteredBooks.map(manga => <StoreItem key={manga._id} manga={manga}/>  ))} 
                 </div>
             </>
             : 

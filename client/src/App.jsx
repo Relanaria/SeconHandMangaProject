@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 
 import  AuthContextProvider  from "./contexts/AuthContext";
+import  MangaContextProvider  from "./contexts/CurrentMangaContext";
 
 import '@fortawesome/fontawesome-free/css/all.css';
 import StoreMangaDetails from './components/details/store-details/StoreMangaDetails';
@@ -8,6 +9,7 @@ import CatalogMangaDetails from './components/details/catalog-details/CatalogMan
 import EditMangaPage from "./components/details/store-details/edit/Edit";
 import CreateItem from './components/create-item/CreateItem';
 import ContactUs from "./components/contact-us/ContactUs";
+import AuthGuardUserEdit from "./components/common/AuthGuardUserEdit";
 import AuthGuardsUser from "./components/common/AuthGuardsUser";
 import AuthGuardGuest from "./components/common/AuthGuardGuest";
 import HomePage from "./components/home-page/HomePage";
@@ -27,7 +29,9 @@ function App() {
   return (
     <>
       <AuthContextProvider>
+      <MangaContextProvider>
       <NavBar />
+
     <main>
       <Routes>
         <Route path="/" element={<HomePage />}/>
@@ -38,19 +42,21 @@ function App() {
         <Route path="/store" element={<Store />} /> 
         <Route path="/store/:mangaId/details" element={ <StoreMangaDetails /> } /> 
 
-
         <Route path="/about" element={<AboutUs />} />
 
+        <Route element={<AuthGuardUserEdit/>}>
+          <Route path="/store/edit/:mangaId" element={ <EditMangaPage /> }/>
+        </Route>
+
         <Route element={<AuthGuardsUser/>}>
-        <Route path="/store/edit/:mangaId" element={ <EditMangaPage /> }/>
-        <Route path='/createItem' element={<CreateItem />}/>
-        <Route path="/contact-us" element={<ContactUs />} /> 
-        <Route path="/profile" element={<ProfilePage/>}/>
+          <Route path='/createItem' element={<CreateItem />}/>
+          <Route path="/contact-us" element={<ContactUs />} /> 
+          <Route path="/profile" element={<ProfilePage/>}/>
         </Route>
 
         <Route element={<AuthGuardGuest />}>
-        <Route path="/login" element={<Login />} /> 
-        <Route path="/register" element={<Register />} /> 
+          <Route path="/login" element={<Login />} /> 
+          <Route path="/register" element={<Register />} /> 
         </Route>
 
         <Route path="*" element={<NotFound />} /> 
@@ -58,6 +64,7 @@ function App() {
       </Routes>
     </main>
 
+      </MangaContextProvider>
       </AuthContextProvider>
       <Footer />
     </>

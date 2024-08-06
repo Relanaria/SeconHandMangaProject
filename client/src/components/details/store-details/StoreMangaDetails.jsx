@@ -5,6 +5,8 @@ import { useNavigate } from 'react-router-dom';
 import { useGetOneMangaStore } from '../../../hooks/useMangaStore';
 import { useAuthContext } from '../../../contexts/AuthContext';
 import { useDeleteManga } from '../../../hooks/useMangaStore';
+import { useMangaContext } from '../../../contexts/CurrentMangaContext';
+
 
 import Spinner from '../../spinner/Spinner';
 
@@ -14,12 +16,12 @@ export default function StoreMangaDetails(props){
     const [errors, setErrors] = useState({});
     const { mangaId } = useParams();
     const [isPending, setIsPending] = useState(true);
-    const [manga, setManga] = useGetOneMangaStore(mangaId, setIsPending);
+    const { mangaDetails, setMangaDetails } = useMangaContext();
+    const [manga, setManga] = useGetOneMangaStore(mangaId, setIsPending, setMangaDetails);
+    const authUserContext = useAuthContext();
     const navigate = useNavigate();
-
     const deleteManga = useDeleteManga();
 
-    const authUserContext = useAuthContext();
     
     async function buyHandleClick(){
         let deleteError = {};

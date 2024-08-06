@@ -33,13 +33,14 @@ export function useGetAllMangaStoreLatest() {
 }
 
 
-export function useGetOneMangaStore(mangaId, setIsPending) {
+export function useGetOneMangaStore(mangaId, setIsPending, setMangaDetails) {
     const [manga, setManga] = useState({});
-
+    
     useEffect(()=>{
         (async ()=>{
             const result = await mangaAPI.getMangaById(directory, mangaId);
             setIsPending(false)
+            setMangaDetails != undefined ? setMangaDetails(result) : ''; 
             setManga(result);
         })();
     },[])

@@ -43,6 +43,12 @@ export const useLogout = () =>{
   const logoutHandler = async (accessToken) =>{
     
     const result = await logout(accessToken);
+
+    if(result.code == 403){
+      //Access token has expired
+      localStorage.clear();
+      authState.logout();
+    }
     
     if(result.status == 204){
       authState.logout();
