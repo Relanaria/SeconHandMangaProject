@@ -86,11 +86,8 @@ export function useDeleteManga(){
 export function useBuyManga() {
  
     const buyManga = async (mangaId, data, accessToken, adminAccess = true) => {
-
         data.statusSold = 'true';
-        
         const result = await mangaAPI.buyManga(directory, mangaId, data, accessToken, adminAccess);
-        console.log(result);
     }
 
     return buyManga;
