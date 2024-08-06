@@ -18,13 +18,15 @@ export function useGetAllMangaStore(setIsFetching){
     return mangaBooks;
 };
 
-export function useGetAllMangaStoreLatest() {
+export function useGetAllMangaStoreLatest(setIsFetching) {
     const [mangaBooks, setMangaBooks] = useState([]);
 
     useEffect(()=>{
        (async()=>{
             const result = await mangaAPI.getAllManga(directoryForHomePage);
-            setMangaBooks(result);
+            const checkBooksMarkedAsSold = result.filter(manga => manga.statusSold != 'true');
+            setMangaBooks(checkBooksMarkedAsSold);
+            setIsFetching(false);
         })();
     }, []);
 

@@ -12,17 +12,7 @@ export const AuthContext = createContext({
 });
 
 export default function AuthContextProvider(props) {
-  const [authState, setAuthState] = useState(() =>{
-    const persistedAuth = localStorage.getItem('authState');
-
-    if(!persistedAuth){
-      return {};
-    };
-
-    const authData = JSON.parse(persistedAuth);
-
-    return authData;
-  });
+  const [authState, setAuthState] = useState({});
 
 
   const changeAuthState = (state) => {
