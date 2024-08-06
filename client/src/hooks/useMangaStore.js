@@ -6,13 +6,25 @@ const directoryForHomePage = 'productList?sortBy=_createdOn%20desc&pageSize=3';
 
 export function useGetAllMangaStore(setIsFetching){
     const [mangaBooks, setMangaBooks] = useState([]);
+    const controller = new AbortController();
+    const signal = controller.signal;
+    let result = [];
 
     useEffect(()=>{
        (async()=>{
-            const result = await mangaAPI.getAllManga(directory);
+        try {
+            
+            result = await mangaAPI.getAllManga(directory, signal);
+        } catch (error) {
+            console.log(error);
+            
+        }    
             setIsFetching(false);
             setMangaBooks(result);
         })();
+        return () => {
+            controller.abort("navigating out of getAllManga");
+          };
     }, []);
 
     return mangaBooks;
@@ -20,14 +32,24 @@ export function useGetAllMangaStore(setIsFetching){
 
 export function useGetAllMangaStoreLatest(setIsFetching) {
     const [mangaBooks, setMangaBooks] = useState([]);
+    const controller = new AbortController();
+    const signal = controller.signal;
+    let result = [];
 
     useEffect(()=>{
        (async()=>{
-            const result = await mangaAPI.getAllManga(directoryForHomePage);
+        try {
+            const result = await mangaAPI.getAllManga(directoryForHomePage, signal);
+        } catch (error) {
+            console.log(error);
+        }
             const checkBooksMarkedAsSold = result.filter(manga => manga.statusSold != 'true');
             setMangaBooks(checkBooksMarkedAsSold);
             setIsFetching(false);
         })();
+        return () => {
+            controller.abort("navigating out of getAllMangaLatest");
+          };
     }, []);
 
 
@@ -37,14 +59,25 @@ export function useGetAllMangaStoreLatest(setIsFetching) {
 
 export function useGetOneMangaStore(mangaId, setIsPending, setMangaDetails) {
     const [manga, setManga] = useState({});
-    
+    const controller = new AbortController();
+    const signal = controller.signal;
+    let result = [];
+  
     useEffect(()=>{
         (async ()=>{
-            const result = await mangaAPI.getMangaById(directory, mangaId);
+            try {
+                
+                result = await mangaAPI.getMangaById(directory, mangaId, signal);
+            } catch (error) {
+                console.log(error);
+            }
             setIsPending(false)
             setMangaDetails != undefined ? setMangaDetails(result) : ''; 
             setManga(result);
         })();
+        return () => {
+            controller.abort("navigating out of getOneManga");
+          };
     },[])
 
     return [manga, setManga];

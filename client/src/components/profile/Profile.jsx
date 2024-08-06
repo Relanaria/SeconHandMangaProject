@@ -16,12 +16,8 @@ const ProfilePage = () => {
     const deleteHandleClick = useDeleteFavourite(setFavorites);
     
     useEffect(() => {
-        // Side effect (e.g., setting up a subscription)
-
         return () => {
             // Cleanup function
-            console.log('Component unmounted');
-            // Cleanup logic (e.g., removing the subscription)
         };
     }, []);
 

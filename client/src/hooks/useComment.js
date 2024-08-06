@@ -33,24 +33,24 @@ export const useGetComments = (mangaId) => {
     useEffect(() => {
         const controller = new AbortController();
         const signal = controller.signal;
+        let result = [];
 
         (async () => {
+            const encodeMangaId = encodeURIComponent(`"${mangaId}"`);
             try {
-                const encodeMangaId = encodeURIComponent(`"${mangaId}"`);
-                const result = await commentsAPI.getComments(encodeMangaId, { signal });
-
-                setComments(result);
+             result = await commentsAPI.getComments(encodeMangaId, signal );
             } catch (error) {
-                if (error.name !== 'AbortError') {
-                    console.error('Failed to fetch comments:', error);
-                }
+
+                console.log(error);
             }
+                setComments(result);
+                
         })();
 
         return () => {
-            controller.abort();
+            controller.abort("Navigating out of Page scopre");
         };
     }, [mangaId]);
-
     return [comments, setComments];
+
 };

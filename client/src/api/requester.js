@@ -1,5 +1,4 @@
 export default async function requester(method, url, data, accessToken, adminAccess, signal) {
-  const controller = new AbortController();
   const options = {
     method,
     headers: {},
@@ -15,8 +14,6 @@ export default async function requester(method, url, data, accessToken, adminAcc
   }else if (accessToken) {
     options.headers["X-Authorization"] = accessToken;
   }
-
- 
 
   if (data != undefined) {
     options.headers["Content-Type"] = "application/json";

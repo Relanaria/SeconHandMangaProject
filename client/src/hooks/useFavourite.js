@@ -28,23 +28,26 @@ export function useGetFavourites(ownerId, setIsFetching) {
   useEffect(() => {
     const controller = new AbortController();
     const signal = controller.signal;
-
-    (async () => {
-      const encodedOwnerId = encodeURIComponent(`"${ownerId}"`);
-      console.log(signal);
+    let result = [];
+   
       
-      const result = await favouriteAPI.getAllFavourites(encodedOwnerId, signal);
-      
-      setIsFetching(false);
-      setFavourites(result);
-    })();
-
-    return () => {
-      console.log('Aboard');
-      controller.abort();
-    };
-  }, []);
-
+      (async () => {
+        const encodedOwnerId = encodeURIComponent(`"${ownerId}"`);
+        try {
+          
+           result = await favouriteAPI.getAllFavourites(encodedOwnerId, signal);
+        } catch (error) {
+          
+        }
+        setIsFetching(false);
+        setFavourites(result);
+      })();
+  
+      return () => {
+        controller.abort("Navigating out of Page scopre");
+      };
+    }, []);
+    
   return [favourites, setFavourites];
 }
 

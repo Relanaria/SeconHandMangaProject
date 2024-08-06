@@ -62,7 +62,6 @@ export default function CatalogMangaDetails(){
     });
 
    async function addToFavouritesHandleClick () {
-    console.log(mangaId,authUserContext.accessToken);
         
     const result =  await createFavourite(mangaId, authUserContext.accessToken);
 
