@@ -31,13 +31,16 @@ export default function CreateCatalogItem() {
             if (Object.keys(formErrors).length > 0) {
                 setErrors(formErrors);
                 return;
-            } 
-            console.log(mangaData);
+            }
             
             const createdManga = await create(mangaData, AuthUserData.accessToken);
 
             navigate(`/catalog/${createdManga._id}/details`)
         } catch (error) {
+            if(error.message == 'Create action not authorized!'){
+                AuthUserData.logout();
+            };
+            
             formErrors.notAuthorized = error.message;
             setErrors(formErrors);
             return;

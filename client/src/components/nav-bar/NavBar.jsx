@@ -31,10 +31,10 @@ export default function NavBar() {
                 {authUserContext.accountStatus == 'Admin' && <li><Link to='/createCatalogItem'>Create Catalog</Link></li>}
                 <li><Link to="/createItem">List Product</Link></li>
                 <li><Link to="/profile">Profile</Link></li>
+                <li><Link to="/contact-us">Contact Us</Link></li>
                 </>
                 }
                 <li><Link to="/about">About Us</Link></li>
-                <li><Link to="/contact-us">Contact Us</Link></li>
             </ul>
             <div className="auth-links">
                 {!authUserContext.isAuthenticated && (

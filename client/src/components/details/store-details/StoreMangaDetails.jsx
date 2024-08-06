@@ -32,6 +32,11 @@ export default function StoreMangaDetails(props){
             await deleteManga(mangaId, authUserContext.accessToken);
             navigate('/store');
         } catch (error) {
+
+            if(error.message == "Edit action not authorized!"){
+                authUserContext.logout();
+            }
+            
             deleteError.isNotAuthorized = error.message;
             setErrors(deleteError)
             return;

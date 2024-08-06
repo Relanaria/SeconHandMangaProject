@@ -48,6 +48,9 @@ export default function EditMangaPage() {
 
         navigate(`/store/${mangaId}/details`);
       } catch (error) {
+        if(error.message == "Edit action not authorized!"){
+          authUserContext.logout();
+        }
         formErrors.notAuthorized = error.message;
         setErrors(formErrors);
         return;

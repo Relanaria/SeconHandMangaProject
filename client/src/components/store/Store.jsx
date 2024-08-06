@@ -17,7 +17,9 @@ export default function Store() {
     
     useEffect(() => {
         const result = filterByGenre(mangaBooks, filterGenre);
+        
         setFilteredBooks(result);
+        
     }, [filterGenre, mangaBooks]);
     
     const handleGenreFilterClick = (e) =>{

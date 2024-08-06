@@ -35,9 +35,13 @@ export default function CreateItem() {
             } 
             
             const createdManga = await create(mangaData, AuthUserData.accessToken);
-
+            
             navigate(`/store/${createdManga._id}/details`)
         } catch (error) {
+            if(error.message == 'Create action not authorized!'){
+                AuthUserData.logout();
+            }
+            
             formErrors.notAuthorized = error.message;
             setErrors(formErrors);
             return;

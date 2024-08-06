@@ -1342,7 +1342,6 @@
     
     var seedData = {
         productList: {
-       
                 "0b00026a-e9fd-4dd8-8482-d2a9ceaf6556": {
                 "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
                 "statusSold": "false",

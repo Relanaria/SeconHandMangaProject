@@ -13,14 +13,14 @@ export function useGetAllMangaStore(setIsFetching){
     useEffect(()=>{
        (async()=>{
         try {
-            
             result = await mangaAPI.getAllManga(directory, signal);
+            
         } catch (error) {
             console.log(error);
-            
         }    
             setIsFetching(false);
             setMangaBooks(result);
+            
         })();
         return () => {
             controller.abort("navigating out of getAllManga");

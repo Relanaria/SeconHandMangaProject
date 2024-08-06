@@ -40,10 +40,9 @@ export const useGetComments = (mangaId) => {
             try {
              result = await commentsAPI.getComments(encodeMangaId, signal );
             } catch (error) {
-
                 console.log(error);
             }
-                setComments(result);
+            setComments(result);
                 
         })();
 

@@ -12,8 +12,8 @@ const ProfilePage = () => {
     const authUserContext = useAuthContext();
     const [isFetching, setIsFetching] = useState(true);
     const [favorites, setFavorites] = useGetFavourites(authUserContext.userId, setIsFetching);
-    
-    const deleteHandleClick = useDeleteFavourite(setFavorites);
+
+    const deleteHandleClick = useDeleteFavourite(setFavorites, authUserContext.logout);
     
     useEffect(() => {
         return () => {

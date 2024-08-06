@@ -44,13 +44,14 @@ export default function EditCatalog(props) {
           setErrors(formErrors);
           return;
         }
-        console.log(mangaData);
         
         await editMangaCatalog(mangaId, mangaData, authUserContext.accessToken);
 
         navigate(`/catalog/${mangaId}/details`);
       } catch (error) {
-        console.log(error);
+        if(error.message == "Edit action not authorized!"){
+          authUserContext.logout();
+        }
         
         formErrors.notAuthorized = error.message;
         setErrors(formErrors);

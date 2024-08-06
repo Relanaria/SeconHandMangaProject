@@ -21,7 +21,7 @@ export default async function requester(method, url, data, accessToken, adminAcc
   }
 
   const response = await fetch(url, options);
-
+  
   if(response.status == 204){
     return response;
   }
