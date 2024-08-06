@@ -112,8 +112,11 @@
 - [x] Consistent design across all pages and elements
 - [x] Using visual hierarchy to guide users's attention to the most important part of a page
 - [x] Using sizes,colors mad positioning to highlight key elements,parts and content
+- [x] Interactive elements
+- [x] Use of visuals to some extend
+- [x] Color selection (mediocre at best)
 - [x] easy to find action buttons
-- [x] Readability (decent )
+- [x] Readability (decent)
 - [x] Create game
   - [x] API function
   - [x] Hook
